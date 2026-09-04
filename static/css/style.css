@@ -163,8 +163,8 @@ header {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  margin-right: 5px;
-  font-weight: 600;
+  margin-right: 15px;
+  font-size: 1.5rem;
 }
 
 

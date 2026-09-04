@@ -23,6 +23,6 @@ def add_skill():
   return render_template("skills.html", title="Database Flask Project - Skills Page")
 
 if __name__ == "__main__":
-  # Runs local server at http://127.0.0.1:5000,
+  # Runs local server at http://127.0.0.1:5001,
   # once you save changes, it refreshes automatically
-  app.run(debug=True)
+  app.run(debug=True, port=5001)
