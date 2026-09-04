@@ -1,0 +1,33 @@
+{% extends "base.html" %} {% block content %}
+<section class="homepage-section">
+  <div class="hero-container">
+    <div class="hero-content">
+      <h1>
+        <span class="home-title">W</span>elcome
+        <span class="home-title">t</span>o <span class="home-title">Y</span>our
+        <span class="home-title">S</span>kills &
+        <span class="home-title">P</span>ortfolio
+        <span class="home-title">H</span>ub -
+        <span class="home-title">B</span>uild to
+        <span class="home-title">G</span>row
+      </h1>
+      <p>
+        A structured, modern web application powered by Flask and PostgreSQL.
+        Organize categories, track your learning journey, and showcase your work
+        - fast, secure, and designed for clear, clean development.
+      </p>
+
+      <div class="home-buttons-group">
+        <a href="{{ url_for('add_developer') }}" class="btn-home btn-primary"><i class="fa-solid fa-plus"></i>Add
+          Developer</a>
+        <a href="{{ url_for('add_skill') }}" class="btn-home btn-primary"><i class="fa-solid fa-plus"></i>Add Skill</a>
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <img src="{{ url_for('static', filename='css/images/profile#2.png') }}" alt="Home page of profile picture"
+        class="profile-image" />
+    </div>
+  </div>
+</section>
+{% endblock %}
