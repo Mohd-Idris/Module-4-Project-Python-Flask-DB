@@ -21,6 +21,8 @@
   --input-color: #F7F7F7;
   /* General Color */
   --general--color: #000000;
+  /* Status Color */
+  --status-color: #888888;
 }
 
 /* Scrolling behaviour styling - when you navigate from section to another */
@@ -57,11 +59,11 @@ header {
 .logo {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #494953;
+  color: var(--base-color);
 }
 
 .logo-span {
-  color: var(--base-color);
+  color: var(--general--color);
 }
 
 .logo:hover,
@@ -185,6 +187,208 @@ header {
   /* border: 1px solid wheat; */
 }
 
+/* End of Home page styling */
+/* ----------------------- */
+
+/* Developers page styling */
+/* ---------------------- */
+body.developers-page {
+  background-color: var(--base-color);
+}
+
+.dev-title {
+  background-color: var(--accent-color);
+  text-align: center;
+  margin: 2rem 25rem;
+  padding: 10px 20px;
+  border-radius: 15px;
+
+}
+
+.dev-title i {
+  color: var(--base-color);
+  margin-right: 20px;
+}
+
+.dev-title-span {
+  color: var(--general--color);
+}
+
+.left-heading-title,
+.right-heading-title {
+  text-align: center;
+  background-color: var(--accent-color);
+  margin: 2rem 0;
+  padding: 10px 20px;
+  border-radius: 15px;
+}
+
+.left-heading-title i,
+.right-heading-title i {
+  color: var(--base-color);
+  margin-right: 20px;
+}
+
+.two-columns-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  align-items: start;
+  padding: 2rem 5%;
+}
+
+.panel-layout {
+  background: var(--input-color);
+  padding: 2rem;
+  border-radius: 10px;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.4);
+}
+
+.Add-form-label {
+  display: block;
+  margin: 0.7rem 0 0.5rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.add-developer-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 1rem;
+  border: 1px solid var(--base-color);
+  border-radius: 5px;
+}
+
+.add-developer-form input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 5px var(--accent-color);
+}
+
+.btn-add-dev-form,
+.btn-edit-dev-form,
+.btn-edit-dev-cancel {
+  background: var(--accent-color);
+  color: var(--general--color);
+  width: 100%;
+  margin-top: 1rem;
+  padding: 12px 15px;
+  border-radius: 15px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-add-dev-form:hover,
+.btn-edit-dev-form:hover,
+.btn-edit-dev-cancel:hover {
+  background-color: var(--base-color);
+  color: var(--input-color);
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.btn-add-dev-form i,
+.btn-edit-dev-form i,
+.btn-edit-dev-cancel i {
+  /* color: var(--base-color); */
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5px;
+  font-size: 1.3rem;
+}
+
+.btn-add-dev-form i:hover,
+.btn-edit-dev-form i:hover,
+.btn-edit-dev-cancel i:hover {
+  color: var(--accent-color);
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border: 3px solid red;
+  /* margin-top: 2rem; */
+}
+
+.item-card {
+  /* background-color: var(--input-color); */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  padding: 1rem;
+  border: 1px solid var(--base-color);
+  border-radius: 10px;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+}
+
+.dev-full-name {
+  /* font-weight: 600;
+  color: var(--text-color); */
+  font-size: 1.05rem;
+}
+
+.dev-email {
+  color: var(--base-color);
+  margin-left: 0.5rem;
+  /* font-size: 0.9rem; */
+}
+
+.card-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-small {
+  /* padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: none; */
+  font-size: 0.8rem;
+}
+
+.btn-danger {
+  /* background-color: var(--base-color);
+  color: var(--input-color);
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: none; */
+  background: #c0392b;
+  color: var(--input-color);
+}
+
+.delete-form {
+  display: inline;
+}
+
+.no-status {
+  color: var(--status-color);
+  font-style: italic;
+  font-size: 0.9rem;
+  border: 2px dashed var(--base-color);
+  padding: 2rem;
+  text-align: center;
+  border-radius: 6px;
+}
+
+.narrow-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* End of Developers page styling */
+/* ----------------------------- */
+
 footer {
   background-color: var(--accent-color);
   width: 100%;
@@ -220,6 +424,9 @@ footer {
   right: 20px;
 }
 
-.scroll-up i {
-  color: var(--general--color);
+.scroll-up:hover {
+  background: linear-gradient(var(--accent-color), var(--general--color));
+  color: var(--input-color);
+  border: 2px solid var(--input-color);
+  transition: all 0.3s ease;
 }

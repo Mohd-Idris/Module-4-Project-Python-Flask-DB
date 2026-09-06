@@ -1,0 +1,26 @@
+{% extends "base.html" %} {%block body_class%}edit-developers-page{%endblock%} {% block content %}
+<h1 class="edit-dev-title"><i class="fa-solid fa-users-gear"></i>
+  <span class="dev-title-span">E</span>dit <span class="dev-title-span">D</span>evelopers
+</h1>
+<!-- Update Developer Profile -->
+<div class="page-wrap narrow-form">
+  <h2 class="heading-title"><i class="fa-solid fa-user-pen"></i>Update Developer Profile</h2>
+  <section class="form-container panel-layout">
+    <form method="POST" class="edit-developer-form">
+
+      <label for="first_name" class="Add-form-label">First Name</label>
+      <input type="text" id="first_name" name="first_name" value="{{ developer.first_name }}" required />
+
+      <label for="last_name" class="Add-form-label">Last Name</label>
+      <input type="text" id="last_name" name="last_name" value="{{ developer.last_name }}" required />
+
+      <label for="email" class="Add-form-label">Email</label>
+      <input type="email" id="email" name="email" value="{{ developer.email }}" required />
+
+      <button type="submit" class="btn-edit-dev-form"><i class="fa-solid fa-floppy-disk"></i> Update
+        Data</button>
+      <a href="{{ url_for('developers') }}" class="btn-edit-dev-cancel"><i class="fa-solid fa-ban"></i> Cancel</a>
+    </form>
+  </section>
+</div>
+{% endblock %}
