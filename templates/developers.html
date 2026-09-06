@@ -1,3 +1,53 @@
 {% extends "base.html" %} {% block content %}
-<h1>Manage Developer</h1>
+<h1 class="dev-title"><i class="fa-solid fa-users-gear"></i>Manage Developers</h1>
+<div class="two-columns-container">
+  <!-- Left Column : Add Developer Form -->
+  <section class="form-container panel-layout">
+    <h2><i class="fa-solid fa-user-plus"></i>Add New Developer</h2>
+    <form action="{{ url_for('add_developer') }}" method="POST" class="add-developer-form">
+
+      <label for="first_name" class="Add-form-label">First Name</label>
+      <input type="text" id="first_name" name="first_name" required />
+
+      <label for="last_name" class="Add-form-label">Last Name</label>
+      <input type="text" id="last_name" name="last_name" required />
+
+      <label for="email" class="Add-form-label">Email</label>
+      <input type="email" id="email" name="email" required />
+
+      <button type="submit" class="btn-add-dev-form btn-home"><i class="fa-solid fa-floppy-disk"></i> Add a
+        Developer</button>
+    </form>
+  </section>
+  <!-- Right Column : List of Developers plus Edit/Delete Options -->
+  <section class="list-developers-container panel-layout">
+    <h2><i class="fa-solid fa-list"></i>List of Developers</h2>
+    {% if developers %}
+    <div class="cards-group">
+      {% for developer in developers %}
+      <div class="item-card">
+        <div class="card-info">
+          <strong class="dev-full-name">{{ developer.first_name }} {{ developer.last_name }} </strong>
+          <span class="dev-email">{{ developer.email }}</span>
+        </div>
+        <div class="card-actions">
+          <a href="{{ url_for('edit_developer', developer_id=developer.id) }}" class="btn btn-small edit-link"><i
+              class="fa-solid fa-pen-to-square"></i> Edit</a>
+
+          <form action="{{ url_for('delete_developer', developer_id=developer.id) }}" method="POST" class="delete-form"
+            onsubmit="return confirm('Are you sure ? deleting this will permanently remove the developer and all associated data.')">
+            <button type="submit" class="delete-button btn btn-small btn-danger"><i class="fa-solid fa-trash"></i>
+              Delete</button>
+          </form>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="no-status">
+      <p>No developers Added Yet. <br>Add some! to create your first profile.</p>
+    </div>
+    {% endif %}
+  </section>
+</div>
 {% endblock %}
