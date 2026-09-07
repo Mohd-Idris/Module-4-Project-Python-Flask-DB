@@ -194,7 +194,8 @@ header {
 
 /* Developers page styling */
 /* ---------------------- */
-body.developers-page {
+body.developers-page,
+body.edit-developers-page {
   background-color: var(--base-color);
 }
 
@@ -209,18 +210,19 @@ body.developers-page {
 
 }
 
-.dev-title i {
+.dev-title i,
+.edit-dev-title i {
   color: var(--base-color);
   margin-right: 20px;
 }
 
-.dev-title-span {
+.dev-title-span,
+.edit-dev-title-span {
   color: var(--general--color);
 }
 
 .left-heading-title,
-.right-heading-title,
-.heading-title {
+.right-heading-title {
   text-align: center;
   background-color: var(--accent-color);
   margin: 2rem 0;
@@ -229,8 +231,7 @@ body.developers-page {
 }
 
 .left-heading-title i,
-.right-heading-title i,
-.heading-title i {
+.right-heading-title i {
   color: var(--base-color);
   margin-right: 20px;
 }
@@ -258,7 +259,8 @@ body.developers-page {
   color: var(--text-color);
 }
 
-.add-developer-form input {
+.add-developer-form input,
+.edit-developer-form input {
   width: 100%;
   padding: 10px;
   margin-bottom: 1rem;
@@ -266,15 +268,15 @@ body.developers-page {
   border-radius: 5px;
 }
 
-.add-developer-form input:focus {
+.add-developer-form input:focus,
+.edit-developer-form input:focus {
   outline: none;
   border-color: var(--accent-color);
   box-shadow: 0 0 5px var(--accent-color);
 }
 
 .btn-add-dev-form,
-.btn-edit-dev-form,
-.btn-edit-dev-cancel {
+.btn-edit-dev-form {
   background: var(--accent-color);
   color: var(--general--color);
   width: 100%;
@@ -284,6 +286,20 @@ body.developers-page {
   font-size: 1rem;
   cursor: pointer;
   border: none;
+}
+
+.btn-edit-dev-cancel {
+  background: var(--error-color);
+  color: var(--input-color);
+  width: 100%;
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 12px 15px;
+  border-radius: 15px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  text-align: center;
 }
 
 .btn-add-dev-form:hover,
@@ -385,6 +401,40 @@ body.developers-page {
   padding: 2rem;
   text-align: center;
   border-radius: 6px;
+}
+
+/* Edit Developer Form */
+.edit-dev-title {
+  background-color: var(--accent-color);
+  text-align: center;
+  margin: 2rem auto 1rem;
+  width: 100%;
+  max-width: 500px;
+  padding: 10px 20px;
+  border-radius: 18px;
+
+}
+
+.heading-title {
+  text-align: center;
+  background-color: var(--accent-color);
+  margin: 1rem auto;
+  width: 100%;
+  max-width: 500px;
+  padding: 10px 20px;
+  border-radius: 18px;
+}
+
+.heading-title i {
+  color: var(--base-color);
+  margin-right: 20px;
+}
+
+.page-wrapper {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 5%;
 }
 
 .narrow-form {

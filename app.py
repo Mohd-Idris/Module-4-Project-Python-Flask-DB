@@ -22,7 +22,10 @@ class Developer(db.Model):
     # Define the string representation of the Developer model for debugging purposes
     def __repr__(self):
         return f'<Developer {self.first_name} {self.last_name}>'
-
+    
+with app.app_context():
+    # Create the database tables based on the defined models
+    db.create_all()
 
 # Home page route -loads HTML from templates Folder
 @app.route("/")
@@ -70,6 +73,42 @@ def add_developer():
   # Query all developers from the database and pass them to the template for rendering
   developers = Developer.query.all()
   return render_template("developers.html", title="Database Flask Project - Manage Developers Page", developers=developers)
+
+@app.route("/edit_developer/<int:developer_id>", methods=["GET", "POST"])
+def edit_developer(developer_id):
+  developer = Developer.query.get_or_404(developer_id)
+
+  # Handle form submission for editing developer details
+  if request.method == "POST":
+    # Get form data
+    first_name = request.form["first_name"].strip()
+    last_name = request.form["last_name"].strip()
+    email = request.form["email"].strip().lower()
+
+    # Validate form data
+    if not first_name or not last_name or not email:
+      flash("❌ All fields are required. Please fill in all fields.", "error")
+      return redirect(url_for("edit_developer", developer_id=developer_id))
+
+    # Check if the email already exists in the database for a different developer
+    existing_developer = Developer.query.filter_by(email=email).first()
+    # If a developer with the same email exists and it's not the current developer being edited, flash an error message and redirect back to the edit developer page
+    if existing_developer and existing_developer.id != developer.id:
+      flash("❌ A developer with this email already exists. Please use a different email.", "error")
+      return redirect(url_for("edit_developer", developer_id=developer_id))
+
+    # Update developer details
+    developer.first_name = first_name
+    developer.last_name = last_name
+    developer.email = email
+
+    # Commit changes to the database
+    db.session.commit()
+    # Flash a success message and redirect back to the add developer page
+    flash("✅ Developer updated successfully!", "success")
+    return redirect(url_for("add_developer"))
+  
+  return render_template("edit-developers.html", title="Database Flask Project - Edit Developer Page", developer=developer)
 
 #  Delete Developer route - handles deletion of a developer by ID
 @app.route("/delete_developer/<int:developer_id>", methods=["POST"])
