@@ -23,6 +23,8 @@
   --general--color: #000000;
   /* Status Color */
   --status-color: #888888;
+  /* Emerald Color */
+  --success-color: #10b981;
   /* Error Color */
   --error-color: #c0392b;
 }
@@ -437,6 +439,48 @@ body.edit-developers-page {
   padding: 1rem 5%;
 }
 
+.flash-messages {
+  width: 90%;
+  max-width: 600px;
+  margin: 1rem auto;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  background-color: var(--input-color);
+  animation: fadeOut 5s ease-in-out forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  60% {
+    opacity: 0.4;
+  }
+
+  80% {
+    opacity: 0.2;
+  }
+
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+
+.flash-success {
+  /* background-color: var(--success-color); */
+  color: var(--success-color);
+  /* margin: 1rem auto; */
+  /* border: 1px solid #c3e6cb; */
+}
+
+.flash-error {
+  /* background-color: #f8d7da; */
+  color: var(--error-color);
+  /* border: 1px solid #f5c6cb; */
+}
 
 /* End of Developers page styling */
 /* ----------------------------- */

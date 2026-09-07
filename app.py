@@ -85,6 +85,13 @@ def edit_developer(developer_id):
     last_name = request.form["last_name"].strip()
     email = request.form["email"].strip().lower()
 
+    # # Commit changes to the database
+    # db.session.commit()
+
+    # # Flash a success message and redirect back to the add developer page
+    # flash("✅ Developer updated successfully!", "success")
+    # return redirect(url_for("add_developer"))
+
     # Validate form data
     if not first_name or not last_name or not email:
       flash("❌ All fields are required. Please fill in all fields.", "error")
