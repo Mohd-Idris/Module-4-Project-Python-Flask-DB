@@ -219,7 +219,8 @@ body.developers-page {
 }
 
 .left-heading-title,
-.right-heading-title {
+.right-heading-title,
+.heading-title {
   text-align: center;
   background-color: var(--accent-color);
   margin: 2rem 0;
@@ -228,7 +229,8 @@ body.developers-page {
 }
 
 .left-heading-title i,
-.right-heading-title i {
+.right-heading-title i,
+.heading-title i {
   color: var(--base-color);
   margin-right: 20px;
 }
