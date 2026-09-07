@@ -39,7 +39,7 @@
           <form action="{{ url_for('delete_developer', developer_id=developer.id) }}" method="POST" class="delete-form"
             onsubmit="return confirm('Are you sure? Deleting this will remove this developer permanently.')">
 
-            <button type="submit" class="delete-button btn btn-small btn-danger"><i class="fa-solid fa-trash"></i>
+            <button type="submit" class="btn btn-small btn-delete"><i class="fa-solid fa-trash"></i>
               Delete</button>
           </form>
         </div>

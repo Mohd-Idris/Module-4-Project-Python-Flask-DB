@@ -199,8 +199,10 @@ body.edit-developers-page {
   background-color: var(--base-color);
 }
 
-.dev-title {
-  background-color: var(--accent-color);
+.dev-title,
+.edit-dev-title {
+  /* background-color: var(--accent-color); */
+  background: linear-gradient(to right, var(--accent-color), var(--input-color));
   text-align: center;
   margin: 2rem auto;
   width: 100%;
@@ -248,7 +250,6 @@ body.edit-developers-page {
   background: var(--input-color);
   padding: 2rem;
   border-radius: 10px;
-  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
   box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.4);
 }
 
@@ -293,12 +294,14 @@ body.edit-developers-page {
   color: var(--input-color);
   width: 100%;
   display: inline-block;
-  margin-top: 1rem;
+  margin: 1rem auto 0;
+  /* margin-top: 1rem; */
   padding: 12px 15px;
   border-radius: 15px;
   font-size: 1rem;
   cursor: pointer;
   border: none;
+
   text-align: center;
 }
 
@@ -334,33 +337,28 @@ body.edit-developers-page {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  /* border: 3px solid red; */
-  /* margin-top: 2rem; */
 }
 
 .item-card {
-  /* background-color: var(--input-color); */
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 0.8rem;
   padding: 1rem;
-  border: 1px solid var(--base-color);
+  border: 1px solid var(--status-color);
   border-radius: 10px;
-  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.1);
 }
 
 .dev-full-name {
-  /* font-weight: 600;
-  color: var(--text-color); */
   font-size: 1.05rem;
 }
 
 .dev-email {
   color: var(--base-color);
   margin-left: 0.5rem;
-  /* font-size: 0.9rem; */
+  font-size: 0.9rem;
 }
 
 .card-actions {
@@ -368,30 +366,39 @@ body.edit-developers-page {
   gap: 0.5rem;
 }
 
-.btn-small {
-  /* padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 0.9rem;
-  cursor: pointer;
-  border: none; */
-  font-size: 0.8rem;
-}
-
-.btn-danger {
-  /* background-color: var(--base-color);
-  color: var(--input-color);
+.edit-link {
+  background-color: var(--accent-color);
+  color: var(--general--color);
   padding: 5px 10px;
   border-radius: 5px;
   font-size: 0.9rem;
   cursor: pointer;
-  border: none; */
-  background: var(--error-color);
-  color: var(--input-color);
+  border: none;
 }
 
 .delete-form {
   display: inline;
 }
+
+.btn-delete {
+  background-color: var(--error-color);
+  color: var(--input-color);
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: none;
+}
+
+
+.edit-link:hover,
+.btn-delete:hover {
+  background-color: var(--base-color);
+  color: var(--input-color);
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
 
 .no-status {
   color: var(--status-color);
@@ -405,42 +412,31 @@ body.edit-developers-page {
 
 /* Edit Developer Form */
 .edit-dev-title {
-  background-color: var(--accent-color);
-  text-align: center;
   margin: 2rem auto 1rem;
-  width: 100%;
-  max-width: 500px;
-  padding: 10px 20px;
-  border-radius: 18px;
-
 }
 
-.heading-title {
-  text-align: center;
+.edit-heading-title {
   background-color: var(--accent-color);
-  margin: 1rem auto;
   width: 100%;
   max-width: 500px;
+  margin: 1rem auto;
   padding: 10px 20px;
   border-radius: 18px;
+  text-align: center;
 }
 
-.heading-title i {
+.edit-heading-title i {
   color: var(--base-color);
   margin-right: 20px;
 }
 
-.page-wrapper {
+.edit-developer-wrapper {
   width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem 5%;
-}
-
-.narrow-form {
   max-width: 600px;
   margin: 0 auto;
+  padding: 1rem 5%;
 }
+
 
 /* End of Developers page styling */
 /* ----------------------------- */
