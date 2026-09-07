@@ -203,7 +203,6 @@ body.edit-developers-page {
 
 .dev-title,
 .edit-dev-title {
-  /* background-color: var(--accent-color); */
   background: linear-gradient(to right, var(--accent-color), var(--input-color));
   text-align: center;
   margin: 2rem auto;
@@ -412,7 +411,11 @@ body.edit-developers-page {
   border-radius: 6px;
 }
 
-/* Edit Developer Form */
+/* End of Developers page styling */
+/* ----------------------------- */
+
+/* Edit Developer Page styling */
+/* -------------------------- */
 .edit-dev-title {
   margin: 2rem auto 1rem;
 }
@@ -446,9 +449,15 @@ body.edit-developers-page {
   padding: 10px;
   border-radius: 5px;
   text-align: center;
+}
+
+.flash-success {
   background-color: var(--input-color);
+  color: var(--success-color);
+  padding: 10px;
   animation: fadeOut 5s ease-in-out forwards;
 }
+
 
 @keyframes fadeOut {
   0% {
@@ -469,22 +478,17 @@ body.edit-developers-page {
   }
 }
 
-.flash-success {
-  /* background-color: var(--success-color); */
-  color: var(--success-color);
-  /* margin: 1rem auto; */
-  /* border: 1px solid #c3e6cb; */
-}
-
 .flash-error {
   /* background-color: #f8d7da; */
   color: var(--error-color);
   /* border: 1px solid #f5c6cb; */
 }
 
-/* End of Developers page styling */
-/* ----------------------------- */
+/* End of Edit Developer Page styling */
+/* --------------------------------- */
 
+/* Footer Page styling */
+/* ------------------ */
 footer {
   background-color: var(--accent-color);
   width: 100%;
@@ -526,3 +530,6 @@ footer {
   border: 2px solid var(--input-color);
   transition: all 0.3s ease;
 }
+
+/* End of Footer Page styling */
+/* ------------------------- */
