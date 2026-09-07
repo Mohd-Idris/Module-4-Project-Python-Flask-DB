@@ -71,6 +71,17 @@ def add_developer():
   developers = Developer.query.all()
   return render_template("developers.html", title="Database Flask Project - Manage Developers Page", developers=developers)
 
+#  Delete Developer route - handles deletion of a developer by ID
+@app.route("/delete_developer/<int:developer_id>", methods=["POST"])
+def delete_developer(developer_id):
+  # Get the developer by ID or return a 404 error if not found
+  developer = Developer.query.get_or_404(developer_id)
+  db.session.delete(developer)
+  db.session.commit()
+  # Flash a success message when developer is deleted and redirect back to the add developer page
+  flash("✅ Developer deleted successfully!", "success")
+  return redirect(url_for("add_developer"))  
+
 # Add Skill page route -loads HTML from templates Folder
 @app.route("/skills")
 def add_skill():
