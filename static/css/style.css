@@ -203,7 +203,9 @@ body.skills-page {
 }
 
 .dev-title,
-.edit-dev-title {
+.edit-dev-title,
+.skill-title,
+.edit-skill-title {
   background: linear-gradient(to right, var(--accent-color), var(--input-color));
   text-align: center;
   margin: 2rem auto;
@@ -215,13 +217,17 @@ body.skills-page {
 }
 
 .dev-title i,
-.edit-dev-title i {
+.edit-dev-title i,
+.skill-title i,
+.edit-skill-title i {
   color: var(--base-color);
   margin-right: 20px;
 }
 
 .dev-title-span,
-.edit-dev-title-span {
+.edit-dev-title-span,
+.skill-title-span,
+.edit-skill-title-span {
   color: var(--general--color);
 }
 
@@ -263,7 +269,10 @@ body.skills-page {
 }
 
 .add-developer-form input,
-.edit-developer-form input {
+.edit-developer-form input,
+.add-skill-form input,
+.add-skill-form select,
+.edit-skill-form input {
   width: 100%;
   padding: 10px;
   margin-bottom: 1rem;
@@ -272,14 +281,18 @@ body.skills-page {
 }
 
 .add-developer-form input:focus,
-.edit-developer-form input:focus {
+.edit-developer-form input:focus,
+.add-skill-form input:focus,
+.edit-skill-form input:focus {
   outline: none;
   border-color: var(--accent-color);
   box-shadow: 0 0 5px var(--accent-color);
 }
 
 .btn-add-dev-form,
-.btn-edit-dev-form {
+.btn-edit-dev-form,
+.btn-add-skill-form,
+.btn-edit-skill-form {
   background: var(--accent-color);
   color: var(--general--color);
   width: 100%;
@@ -291,7 +304,8 @@ body.skills-page {
   border: none;
 }
 
-.btn-edit-dev-cancel {
+.btn-edit-dev-cancel,
+.btn-edit-skill-cancel {
   background: var(--error-color);
   color: var(--input-color);
   width: 100%;
@@ -309,7 +323,10 @@ body.skills-page {
 
 .btn-add-dev-form:hover,
 .btn-edit-dev-form:hover,
-.btn-edit-dev-cancel:hover {
+.btn-edit-dev-cancel:hover,
+.btn-add-skill-form:hover,
+.btn-edit-skill-form:hover,
+.btn-edit-skill-cancel:hover {
   background-color: var(--base-color);
   color: var(--input-color);
   text-transform: uppercase;
@@ -318,7 +335,10 @@ body.skills-page {
 
 .btn-add-dev-form i,
 .btn-edit-dev-form i,
-.btn-edit-dev-cancel i {
+.btn-edit-dev-cancel i,
+.btn-add-skill-form i,
+.btn-edit-skill-form i,
+.btn-edit-skill-cancel i {
   /* color: var(--base-color); */
   display: inline-flex;
   justify-content: center;
@@ -329,7 +349,10 @@ body.skills-page {
 
 .btn-add-dev-form i:hover,
 .btn-edit-dev-form i:hover,
-.btn-edit-dev-cancel i:hover {
+.btn-edit-dev-cancel i:hover,
+.btn-add-skill-form i:hover,
+.btn-edit-skill-form i:hover,
+.btn-edit-skill-cancel i:hover {
   color: var(--accent-color);
   text-transform: uppercase;
   transition: all 0.3s ease;
@@ -442,6 +465,52 @@ body.skills-page {
   margin: 0 auto;
   padding: 1rem 5%;
 }
+
+/* End of Edit Developers page styling */
+/* ---------------------------------- */
+
+/* Skills Page styling */
+/* ------------------ */
+.add-skill-form input[placeholder],
+.add-skill-form select {
+  text-align: center;
+}
+
+
+/* End of Skills Page styling */
+/* ------------------------- */
+
+/* Edit Skills Page styling */
+/* -------------------------- */
+.edit-skill-title {
+  margin: 2rem auto 1rem;
+}
+
+.edit-heading-title {
+  background-color: var(--accent-color);
+  width: 100%;
+  max-width: 500px;
+  margin: 1rem auto;
+  padding: 10px 20px;
+  border-radius: 18px;
+  text-align: center;
+}
+
+.edit-heading-title i {
+  color: var(--base-color);
+  margin-right: 20px;
+}
+
+.edit-skill-wrapper {
+  width: 90%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1rem 5%;
+}
+
+/* End of Edit Skills page styling */
+/* ---------------------------------- */
+
 
 .flash-messages {
   width: 90%;
