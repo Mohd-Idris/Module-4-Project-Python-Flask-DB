@@ -92,6 +92,11 @@ header {
   color: var(--input-color);
 }
 
+.nav-link.active {
+  font-weight: 700;
+  color: var(--general--color);
+}
+
 .homepage-section {
   background-color: var(--general--color);
   min-height: 70vh;
