@@ -282,7 +282,7 @@ body.skills-page {
 
 .add-developer-form input:focus,
 .edit-developer-form input:focus,
-.add-skill-form input:focus,
+.add-skill-form input:focus:not(.range-input),
 .edit-skill-form input:focus {
   outline: none;
   border-color: var(--accent-color);
@@ -474,6 +474,27 @@ body.skills-page {
 .add-skill-form input[placeholder],
 .add-skill-form select {
   text-align: center;
+}
+
+.percent-value-span {
+  font-weight: 600;
+  color: var(--base-color);
+  margin-left: 20px;
+}
+
+.slider-wrapper {
+  width: 100%;
+  padding: 0.5rem 0;
+}
+
+.range-input {
+  width: 100%;
+  height: 8px;
+  border-radius: 8px;
+  background: var(--input-color);
+  outline: none;
+  border: none;
+  cursor: pointer;
 }
 
 

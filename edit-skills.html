@@ -29,20 +29,54 @@
         <option value="Marketing" {% if skill.category=='Marketing<' %}selected{%endif%}>Marketing</option>
         <option value="Others" {% if skill.category=='Others<' %}selected{%endif%}>Others</option>
       </select>
-      <!-- Skill Percentage -->
-      <label for="percentage" class="Add-form-label">Percentage</label>
+      <!-- Skill Proficiency Level -->
+      <label for="percentage" class="Add-form-label">Proficiency Level</label>
       <input type="number" id="percentage" name="percentage" min="0" max="100" value="{{ skill.percentage }}"
         required />
+
+      <label for="percentage" class="Add-form-label">Proficiency Level: <span class="percent-value-span">{{
+          skill.percentage }}%</span></label>
+      <div class="slider-wrapper">
+        <input type="range" name="percentage" id="percentage" min="0" max="100" value="{{ skill.percentage }}" step="1"
+          class="range-input" />
+      </div>
       <!-- Skill Image URL -->
-      <label for="image_url" class="Add-form-label">Image URL</label>
-      <input type="url" id="image_url" name="image_url" value="{{ skill.image_url }}" required />
+      <!-- <label for="image_url" class="Add-form-label">Image URL</label>
+      <input type="url" id="image_url" name="image_url" value="{{ skill.image_url }}" required /> -->
 
       <!-- Update Button -->
       <button type="submit" class="btn-edit-skill-form"><i class="fa-solid fa-pen"></i> Update
-        Data</button>
+        Skill</button>
       <!-- Cancel Button -->
       <a href="{{ url_for('add_skill') }}" class="btn-edit-skill-cancel"><i class="fa-solid fa-ban"></i> Cancel</a>
     </form>
   </section>
 </div>
+<!-- Slider  -->
+<script>
+  const percentage = document.getElementById('percentage');
+  const percentValueSpan = document.querySelector('.percent-value-span');
+
+  percentage.oninput = () => {
+    percentValueSpan.textContent = percentage.value + '%';
+
+    if (percentage.value >= 0 && percentage.value <= 30) {
+      percentValueSpan.style.color = '#ef4444';
+    }
+
+    else if (percentage.value > 30 && percentage.value <= 50) {
+      percentValueSpan.style.color = '#f59e0b';
+    }
+    else if (percentage.value > 50 && percentage.value <= 70) {
+      percentValueSpan.style.color = '#b45309';
+    }
+    else if (percentage.value > 70 && percentage.value <= 85) {
+      percentValueSpan.style.color = '#10b981';
+    }
+    else {
+      percentValueSpan.style.color = '#0ea874';
+    }
+  }
+
+</script>
 {% endblock %}
