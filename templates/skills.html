@@ -1,3 +1,73 @@
-{% extends "base.html" %} {% block content %}
-<h1>Manage Skill</h1>
+{% extends "base.html" %}{%block body_class%}skills-page{%endblock%} {% block content %}
+<h1 class="skill-title"><i class="fa-solid fa-users-gear"></i>
+  <span class="skill-title-span">M</span>anage <span class="skill-title-span">S</span>kills
+</h1>
+
+<div class="two-columns-container">
+  <!-- Left Column : Add Developer Form -->
+  <section class="form-container panel-layout">
+    <h2 class="left-heading-title"><i class="fa-solid fa-user-plus"></i>Add New Skill</h2>
+    <form action="{{ url_for('add_skill') }}" method="POST" class="add-skill-form">
+      <!-- Skill Name -->
+      <label for="skill_name" class="Add-form-label">Skill Name</label>
+      <input type="text" id="skill_name" name="skill_name" />
+      <!-- Description -->
+      <label for="description" class="Add-form-label">Description</label>
+      <input type="text" id="description" name="description" />
+      <!-- Percentage -->
+      <label for="percentage" class="Add-form-label">Percentage</label>
+      <input type="number" id="percentage" name="percentage" min="0" max="100" />
+      <!-- Image URL -->
+      <label for="image_url" class="Add-form-label">Image URL</label>
+      <input type="url" id="image_url" name="image_url" />
+      <!-- Category -->
+      <label for="category" class="Add-form-label">Category</label>
+      <select id="category" name="category">
+        <option value="">Select a category</option>
+        <option value="Programming">Frontend Development</option>
+        <option value="Programming">Backend Development</option>
+        <option value="Programming">Programming Languages</option>
+        <option value="Programming">Databases</option>
+        <option value="Programming">Tools & DevOps</option>
+        <option value="Design">Design</option>
+        <option value="Marketing">Marketing</option>
+        <option value="Marketing">Others</option>
+      </select>
+      <button type="submit" class="btn-add-dev-form"><i class="fa-solid fa-floppy-disk"></i> Add a
+        Developer</button>
+    </form>
+  </section>
+
+  <!-- Right Column : List of Skills plus Edit/Delete Options -->
+  <section class="list-developers-container panel-layout">
+    <h2 class="right-heading-title"><i class="fa-solid fa-list"></i>List of Skills</h2>
+    {% if skills %}
+    <div class="cards-container">
+      {% for skill in skills %}
+      <div class="item-card">
+        <div class="card-info">
+          <strong class="dev-full-name">{{ skill.name }}</strong>
+          <span class="dev-email">{{ skill.description }}</span>
+        </div>
+        <div class="card-actions">
+          <a href="{{ url_for('edit_skill', skill_id=skill.id) }}" class="btn btn-small edit-link"><i
+              class="fa-solid fa-pen-to-square"></i> Edit</a>
+
+          <form action="{{ url_for('delete_skill', skill_id=skill.id) }}" method="POST" class="delete-form"
+            onsubmit="return confirm('Are you sure? Deleting this will remove this skill permanently.')">
+
+            <button type="submit" class="btn btn-small btn-delete"><i class="fa-solid fa-trash"></i>
+              Delete</button>
+          </form>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="no-status">
+      <p>No skills Added Yet. <br>Add some! to create your first portfolio.</p>
+    </div>
+    {% endif %}
+  </section>
+</div>
 {% endblock %}
