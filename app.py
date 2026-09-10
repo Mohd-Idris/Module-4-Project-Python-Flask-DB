@@ -186,8 +186,8 @@ def edit_skill(skill_id):
 
     # Validate form data
     if not name or not category or not percentage or not description:
-        flash("❌ All fields are required. Please fill in all fields.", "error") 
-        return redirect(url_for("edit_skill"), skill_id=skill_id)
+      flash("❌ All fields are required. Please fill in all fields.", "error") 
+      return redirect(url_for("edit_skill", skill_id=skill_id))
 
     # Update developer details
     skill.name = name

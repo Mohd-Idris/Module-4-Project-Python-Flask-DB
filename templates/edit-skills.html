@@ -9,13 +9,13 @@
     <form action="{{ url_for('edit_skill', skill_id=skill.id)}}" method="POST" class="edit-skill-form">
       <!-- Skill Name -->
       <label for="name" class="Add-form-label">Skill Name</label>
-      <input type="text" id="name" name="name" value="{{ skill.name }}" required />
+      <input type="text" id="name" name="name" value="{{ skill.name }}" />
       <!-- Skill Description -->
       <label for="description" class="Add-form-label">Description</label>
-      <input type="text" id="description" name="description" value="{{ skill.description }}" required />
+      <input type="text" id="description" name="description" value="{{ skill.description }}" />
       <!-- Skill Category -->
       <label for="category" class="Add-form-label">Category</label>
-      <select id="category" name="category" required>
+      <select id="category" name="category">
         <option value="Frontend Development" {% if skill.category=='Frontend Development' %}selected{%endif%}>Frontend
           Development</option>
         <option value="Backend Development" {% if skill.category=='Backend Development' %}selected{%endif%}>Backend
@@ -30,10 +30,6 @@
         <option value="Others" {% if skill.category=='Others<' %}selected{%endif%}>Others</option>
       </select>
       <!-- Skill Proficiency Level -->
-      <label for="percentage" class="Add-form-label">Proficiency Level</label>
-      <input type="number" id="percentage" name="percentage" min="0" max="100" value="{{ skill.percentage }}"
-        required />
-
       <label for="percentage" class="Add-form-label">Proficiency Level: <span class="percent-value-span">{{
           skill.percentage }}%</span></label>
       <div class="slider-wrapper">

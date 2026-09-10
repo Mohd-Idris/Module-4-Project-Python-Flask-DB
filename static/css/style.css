@@ -203,7 +203,8 @@ header {
 /* ---------------------- */
 body.developers-page,
 body.edit-developers-page,
-body.skills-page {
+body.skills-page,
+body.edit-skill-page {
   background-color: var(--base-color);
 }
 
@@ -277,7 +278,8 @@ body.skills-page {
 .edit-developer-form input,
 .add-skill-form input,
 .add-skill-form select,
-.edit-skill-form input {
+.edit-skill-form input,
+.edit-skill-form select {
   width: 100%;
   padding: 10px;
   margin-bottom: 1rem;
