@@ -22,6 +22,18 @@ class Developer(db.Model):
     # Define the string representation of the Developer model for debugging purposes
     def __repr__(self):
         return f'<Developer {self.first_name} {self.last_name}>'
+
+# Define the Skills model with id, name, category, percentage, and description fields
+class Skill(db.Model):
+  id = db.Column(db.Integer, primary_key=True)
+  name = db.Column(db.String(50), nullable=False)
+  category = db.Column(db.String(50), nullable=False)
+  percentage = db.Column(db.Integer, nullable=False)
+  description = db.Column(db.Text, nullable=False)
+
+  # Define the string representation of the Skill model for debugging purposes
+  def __repr__(self):
+      return f'<Skill {self.name}>'
     
 with app.app_context():
     # Create the database tables based on the defined models
@@ -128,10 +140,79 @@ def delete_developer(developer_id):
   flash("✅ Developer deleted successfully!", "success")
   return redirect(url_for("add_developer"))  
 
+
+# Manage Skills 
 # Add Skill page route -loads HTML from templates Folder
-@app.route("/skills")
+@app.route("/skills", methods=["GET", "POST"])
 def add_skill():
-  return render_template("skills.html", title="Database Flask Project - Skills Page")
+  if request.method == "POST":
+      # Get form data
+      name = request.form["skill_name"].strip()
+      category = request.form["category"].strip()
+      percentage = request.form["percentage"].strip()
+      description = request.form["description"].strip()
+  
+      # Validate form data first 
+      if not name or not category or not percentage or not description:
+        flash("❌ All fields are required. Please fill in all fields.", "error") 
+        return redirect(url_for("add_skill"))
+  
+      # Create new developer instance
+      new_skill = Skill(name=name, category=category, percentage=percentage, description=description)
+  
+      # Add to database
+      db.session.add(new_skill)
+      db.session.commit()
+      # Flash a success message and redirect back to the add skill page
+      flash("✅ Skill added successfully!", "success")
+      return redirect(url_for("add_skill"))
+  
+  # Query all skills from the database and pass them to the template for rendering
+  skills = Skill.query.all()
+  
+  return render_template("skills.html", title="Database Flask Project - Manage Skills Page", skills=skills)
+
+@app.route("/edit_skill/<int:skill_id>", methods=["GET", "POST"])
+def edit_skill(skill_id):
+  skill = Skill.query.get_or_404(skill_id)
+
+  # Handle form submission for editing skill details
+  if request.method == "POST":
+    # Get form data
+    name = request.form["name"].strip()
+    category = request.form["category"].strip()
+    percentage = request.form["percentage"].strip()
+    description = request.form["description"].strip()
+
+    # Validate form data
+    if not name or not category or not percentage or not description:
+        flash("❌ All fields are required. Please fill in all fields.", "error") 
+        return redirect(url_for("edit_skill"), skill_id=skill_id)
+
+    # Update developer details
+    skill.name = name
+    skill.category = category
+    skill.percentage = percentage
+    skill.description = description
+
+    # Commit changes to the database
+    db.session.commit()
+    # Flash a success message and redirect back to the add developer page
+    flash("✅ Skill updated successfully!", "success")
+    return redirect(url_for("add_skill"))
+  
+  return render_template("edit-skills.html", title="Database Flask Project - Edit Developer Page", skill=skill)
+
+#  Delete Skill route - handles deletion of a skill by ID
+@app.route("/delete_skill/<int:skill_id>", methods=["POST"])
+def delete_skill(skill_id):
+  # Get the developer by ID or return a 404 error if not found
+  skill = Skill.query.get_or_404(skill_id)
+  db.session.delete(skill)
+  db.session.commit()
+  # Flash a success message when developer is deleted and redirect back to the add developer page
+  flash("✅ Skill deleted successfully!", "success")
+  return redirect(url_for("add_skill"))  
 
 if __name__ == "__main__":
   # Runs local server at http://127.0.0.1:5001,
