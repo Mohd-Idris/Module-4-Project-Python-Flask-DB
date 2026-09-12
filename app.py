@@ -28,7 +28,6 @@ class Skill(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   name = db.Column(db.String(50), nullable=False)
   category = db.Column(db.String(50), nullable=False)
-  percentage = db.Column(db.Integer, nullable=False)
   description = db.Column(db.Text, nullable=False)
 
   # Define the string representation of the Skill model for debugging purposes
@@ -149,16 +148,16 @@ def add_skill():
       # Get form data
       name = request.form["skill_name"].strip()
       category = request.form["category"].strip()
-      percentage = request.form["percentage"].strip()
+      # percentage = request.form["percentage"].strip()
       description = request.form["description"].strip()
   
       # Validate form data first 
-      if not name or not category or not percentage or not description:
+      if not name or not category or not description:
         flash("❌ All fields are required. Please fill in all fields.", "error") 
         return redirect(url_for("add_skill"))
   
       # Create new developer instance
-      new_skill = Skill(name=name, category=category, percentage=percentage, description=description)
+      new_skill = Skill(name=name, category=category, description=description)
   
       # Add to database
       db.session.add(new_skill)
@@ -181,18 +180,18 @@ def edit_skill(skill_id):
     # Get form data
     name = request.form["name"].strip()
     category = request.form["category"].strip()
-    percentage = request.form["percentage"].strip()
+    # percentage = request.form["percentage"].strip()
     description = request.form["description"].strip()
 
     # Validate form data
-    if not name or not category or not percentage or not description:
+    if not name or not category or not description:
       flash("❌ All fields are required. Please fill in all fields.", "error") 
       return redirect(url_for("edit_skill", skill_id=skill_id))
 
     # Update developer details
     skill.name = name
     skill.category = category
-    skill.percentage = percentage
+    # skill.percentage = percentage
     skill.description = description
 
     # Commit changes to the database

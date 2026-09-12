@@ -25,12 +25,12 @@
         <option value="Others">Others</option>
       </select>
       <!-- Skill Proficiency Level -->
-      <label for="percentage" class="Add-form-label">Proficiency Level: <span
+      <!-- <label for="percentage" class="Add-form-label">Proficiency Level: <span
           class="percent-value-span">50%</span></label>
       <div class="slider-wrapper">
         <input type="range" name="percentage" id="percentage" min="0" max="100" value="50" step="1"
           class="range-input" />
-      </div>
+      </div> -->
       <!-- Description -->
       <label for="description" class="Add-form-label">Description</label>
       <input type="text" id="description" name="description" placeholder="Please Enter a Skill Description" />
@@ -51,8 +51,9 @@
       {% for skill in skills %}
       <div class="item-card">
         <div class="card-info">
-          <strong class="dev-full-name">{{ skill.name }}</strong>
-          <span class="dev-email">{{ skill.description }}</span>
+          <span class="skill-name">{{ skill.name }}</span>
+          <span class="skill-category">{{ skill.category }}</span>
+          <span class="skill-desc">{{ skill.description }}</span>
         </div>
         <div class="card-actions">
           <a href="{{ url_for('edit_skill', skill_id=skill.id) }}" class="btn btn-small edit-link"><i
@@ -76,7 +77,7 @@
   </section>
 </div>
 <!-- Slider  -->
-<script>
+<!-- <script>
   const percentage = document.getElementById('percentage');
   const percentValueSpan = document.querySelector('.percent-value-span');
 
@@ -99,5 +100,5 @@
       percentValueSpan.style.color = '#0ea874';
     }
   }
-</script>
+</script> -->
 {% endblock %}

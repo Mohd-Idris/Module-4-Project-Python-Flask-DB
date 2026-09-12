@@ -383,8 +383,10 @@ body.edit-skill-page {
   box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.1);
 }
 
-.dev-full-name {
+.dev-full-name,
+.skill-name {
   font-size: 1.05rem;
+  font-weight: 600;
 }
 
 .dev-email {
@@ -392,6 +394,21 @@ body.edit-skill-page {
   margin-left: 0.5rem;
   font-size: 0.9rem;
 }
+
+/* Skills inputs */
+.skill-category {
+  font-weight: 600;
+}
+
+.skill-desc,
+.skill-category {
+  color: var(--base-color);
+  /* margin-left: 0.5rem; */
+  font-size: 0.9rem;
+  display: block;
+}
+
+/* end of skills inputs */
 
 .card-actions {
   display: flex;
@@ -578,7 +595,9 @@ body.edit-skill-page {
 
 .flash-error {
   /* background-color: #f8d7da; */
+  background-color: var(--input-color);
   color: var(--error-color);
+  padding: 10px;
   /* border: 1px solid #f5c6cb; */
 }
 

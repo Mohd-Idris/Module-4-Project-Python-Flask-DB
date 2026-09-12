@@ -1,10 +1,10 @@
 {% extends "base.html" %} {%block body_class%}edit-skill-page{%endblock%} {% block content %}
-<h1 class="edit-skill-title"><i class="fa-solid fa-users-gear"></i>
+<h1 class="edit-skill-title"><i class="fa-brands fa-buffer"></i>
   <span class="skill-title-span">M</span>anage <span class="skill-title-span">S</span>kills
 </h1>
 <!-- Update Skill Profile -->
 <div class="edit-skill-wrapper">
-  <h2 class="edit-heading-title"><i class="fa-solid fa-user-pen"></i>Update Skill Profile</h2>
+  <h2 class="edit-heading-title"><i class="fa-solid fa-wand-magic-sparkles"></i>Update Skill Profile</h2>
   <section class="form-container panel-layout">
     <form action="{{ url_for('edit_skill', skill_id=skill.id)}}" method="POST" class="edit-skill-form">
       <!-- Skill Name -->
@@ -30,12 +30,13 @@
         <option value="Others" {% if skill.category=='Others<' %}selected{%endif%}>Others</option>
       </select>
       <!-- Skill Proficiency Level -->
-      <label for="percentage" class="Add-form-label">Proficiency Level: <span class="percent-value-span">{{
+      <!-- <label for="percentage" class="Add-form-label">Proficiency Level: <span class="percent-value-span">{{
           skill.percentage }}%</span></label>
       <div class="slider-wrapper">
         <input type="range" name="percentage" id="percentage" min="0" max="100" value="{{ skill.percentage }}" step="1"
           class="range-input" />
-      </div>
+      </div> -->
+
       <!-- Skill Image URL -->
       <!-- <label for="image_url" class="Add-form-label">Image URL</label>
       <input type="url" id="image_url" name="image_url" value="{{ skill.image_url }}" required /> -->
