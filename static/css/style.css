@@ -23,6 +23,10 @@
   --general--color: #000000;
   /* Status Color */
   --status-color: #888888;
+  /* Blue Color */
+  --soft-color: #3b70c4;
+  /* Blue Color */
+  --sub-color: #A47251;
   /* Emerald Color */
   --success-color: #10b981;
   /* Error Color */
@@ -506,6 +510,21 @@ body.edit-skill-page {
   margin-left: 20px;
 }
 
+.cards-container .dev-full-name,
+.cards-container .skill-name {
+  color: var(--soft-color);
+}
+
+.cards-container .skill-category {
+  color: var(--sub-color);
+}
+
+.cards-container .dev-email,
+.cards-container .skill-desc {
+  color: var(--base-color);
+  font-weight: 500;
+}
+
 .slider-wrapper {
   width: 100%;
   padding: 0.5rem 0;
@@ -598,6 +617,8 @@ body.edit-skill-page {
   background-color: var(--input-color);
   color: var(--error-color);
   padding: 10px;
+  white-space: pre-line;
+  line-height: 1.9;
   /* border: 1px solid #f5c6cb; */
 }
 

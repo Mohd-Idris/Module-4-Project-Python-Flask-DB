@@ -10,19 +10,23 @@
     <form action="{{ url_for('add_skill') }}" method="POST" class="add-skill-form">
       <!-- Skill Name -->
       <label for="skill_name" class="Add-form-label">Skill Name</label>
-      <input type="text" id="skill_name" name="skill_name" placeholder="Please Enter a Skill Name" />
+      <input type="text" id="skill_name" name="skill_name" placeholder="Please Enter a Skill Name"
+        value="{{nameInput}}" />
       <!-- Category -->
       <label for="category" class="Add-form-label">Skill Category</label>
       <select id="category" name="category">
         <option value="">Select a Category</option>
-        <option value="Frontend Development">Frontend Development</option>
-        <option value="Backend Development">Backend Development</option>
-        <option value="Programming Languages">Programming Languages</option>
-        <option value="Databases">Databases</option>
-        <option value="Tools & DevOps">Tools & DevOps</option>
-        <option value="Design">Design</option>
-        <option value="Marketing">Marketing</option>
-        <option value="Others">Others</option>
+        <option value="Frontend Development" {{ categoryInput=='Frontend Development' and 'selected' }}>Frontend
+          Development</option>
+        <option value="Backend Development" {{ categoryInput=='Backend Development' and 'selected' }}>Backend
+          Development</option>
+        <option value="Programming Languages" {{ categoryInput=='Programming Languages' and 'selected' }}>Programming
+          Languages</option>
+        <option value="Databases" {{ categoryInput=='Databases' and 'selected' }}>Databases</option>
+        <option value="Tools & DevOps {{ categoryInput=='Tools & DevOps' and 'selected' }}">Tools & DevOps</option>
+        <option value="Design" {{ categoryInput=='Design' and 'selected' }}>Design</option>
+        <option value="Marketing" {{ categoryInput=='Marketing' and 'selected' }}>Marketing</option>
+        <option value="Others" {{ categoryInput=='Others' and 'selected' }}>Others</option>
       </select>
       <!-- Skill Proficiency Level -->
       <!-- <label for="percentage" class="Add-form-label">Proficiency Level: <span
@@ -33,7 +37,8 @@
       </div> -->
       <!-- Description -->
       <label for="description" class="Add-form-label">Description</label>
-      <input type="text" id="description" name="description" placeholder="Please Enter a Skill Description" />
+      <input type="text" id="description" name="description" value="{{descriptionInput}}"
+        placeholder="Please Enter a Skill Description" />
 
       <!-- Image URL -->
       <!-- <label for="image_url" class="Add-form-label">Image URL</label>

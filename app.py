@@ -58,18 +58,49 @@ def add_developer():
     last_name = request.form["last_name"].strip()
     email = request.form["email"].strip().lower()
 
-    # Validate form data first 
-    if not first_name or not last_name or not email:
-      flash("❌ All fields are required. Please fill in all fields.", "error") 
-      return redirect(url_for("add_developer"))
+    # Track errors
+    errors = []
+    
+    firstNameInput = first_name
+    lastNameInput = last_name
+    emailInput = email
+    
+    if not  first_name:
+      errors.append("* First Name is Required.")
+    if not last_name:
+       errors.append("* Last Name is Required.")
+    if not email:
+      errors.append("* Email is Required.")
 
     # Check if the email already exists in the database
     existing_developer = Developer.query.filter_by(email=email).first()
+    if existing_developer:
+      errors.append("❌ A developer with this email already exists. Please use a different email.")
+  
+    
+    if errors:
+      error_message = "❌ Missing Fields: \n" + "\n".join(errors)
+      flash(error_message, "error")
+      return render_template("developers.html",
+                              title="Database Flask Project - Manage Developers Page",
+                              developers=Developer.query.all(),
+                              firstNameInput=first_name,
+                              lastNameInput=last_name,
+                              emailInput=email
+                              )
+
+    # Validate form data first 
+    # if not first_name or not last_name or not email:
+    #   flash("❌ All fields are required. Please fill in all fields.", "error") 
+    #   return redirect(url_for("add_developer"))
+
+    # Check if the email already exists in the database
+    # existing_developer = Developer.query.filter_by(email=email).first()
 
     # If a developer with the same email exists, flash an error message and redirect back to the add developer page
-    if existing_developer:
-      flash("❌ A developer with this email already exists. Please use a different email.", "error")
-      return redirect(url_for("add_developer"))
+    # if existing_developer:
+      # flash("❌ A developer with this email already exists. Please use a different email.", "error")
+      # return redirect(url_for("add_developer"))
 
     # Create new developer instance
     new_developer = Developer(first_name=first_name, last_name=last_name, email=email)
@@ -150,11 +181,37 @@ def add_skill():
       category = request.form["category"].strip()
       # percentage = request.form["percentage"].strip()
       description = request.form["description"].strip()
+
+
+      # Track errors
+      errors = []
+
+      nameInput = name
+      categoryInput = category
+      descriptionInput = description
+
+      if not name:
+        errors.append("* Skill Name is Required.")
+      if not category:
+        errors.append("* Skill Category is Required.")
+      if not description:
+        errors.append("* Skill Description is Required.")
+
+      if errors:
+        error_message = "❌ Missing Fields: \n" + "\n".join(errors)
+        flash(error_message, "error")
+        return render_template("skills.html",
+                               title="Database Flask Project - Manage Skills Page",
+                               skills=Skill.query.all(),
+                               nameInput=name,
+                               categoryInput=category,
+                               descriptionInput=description
+                               )
   
       # Validate form data first 
-      if not name or not category or not description:
-        flash("❌ All fields are required. Please fill in all fields.", "error") 
-        return redirect(url_for("add_skill"))
+      # if not name or not category or not description:
+      #   flash("❌ All fields are required. Please fill in all fields.", "error") 
+      #   return redirect(url_for("add_skill"))
   
       # Create new developer instance
       new_skill = Skill(name=name, category=category, description=description)
