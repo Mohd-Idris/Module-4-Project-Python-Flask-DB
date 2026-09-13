@@ -33,7 +33,23 @@ class Skill(db.Model):
   # Define the string representation of the Skill model for debugging purposes
   def __repr__(self):
       return f'<Skill {self.name}>'
-    
+
+
+# Define the Developer-Skills model with id, dev_id, skill_id, and proficiency_level fields
+class DeveloperSkill(db.Model):
+  id = db.Column(db.Integer, primary_key=True)
+  developer_id = db.Column(db.Integer, db.ForeignKey('developer.id'), nullable=False)
+  skill_id = db.Column(db.Integer, db.ForeignKey('skill.id'), nullable=False)
+  proficiency_level = db.Column(db.Integer, nullable=False)
+
+  # Define the Relationship between Entities (Developer & Skill)
+  developer = db.relationship('Developer', backref=db.backref('skills_assigned', cascade='all, delete-orphan'))
+  skill = db.relationship('Skill', backref=db.backref('developers_assigned', cascade='all, delete-orphan'))
+
+  def __repr__(self):
+    return f'<DeveloperSkill Developer:{self.developer_id} Skill:{self.skill_id}'
+
+
 with app.app_context():
     # Create the database tables based on the defined models
     db.create_all()
@@ -270,6 +286,63 @@ def delete_skill(skill_id):
   flash("✅ Skill deleted successfully!", "success")
   return redirect(url_for("add_skill"))  
 
+# Assign Skills to Developers 
+# Add DeveloperSkill page route -loads HTML from templates Folder
+@app.route("/developer-skills", methods=["GET", "POST"])
+def assign_skill():
+  if request.method == "POST":
+     # Get form data
+     dev_id = request.form["developer_id"].strip()
+     skill_id = request.form["skill_id"].strip()
+     pro_level = request.form["skill-proficiency"].strip()
+
+
+     # Track errors
+     errors = []
+      
+     #  nameInput = name
+     #  categoryInput = category
+     #  descriptionInput = description
+      
+     if not dev_id or dev_id == "":
+        errors.append("* Developer must be selected first.")
+     if not skill_id or skill_id == "":
+        errors.append("* Skill must be selected first.")
+     if not pro_level:
+        errors.append("* Skill Proficiency must be determined.")
+      
+     if errors:
+        error_message = "❌ Missing Fields: \n" + "\n".join(errors)
+        flash(error_message, "error")
+        return render_template("developer-skills.html",
+                                     title="Database Flask Project - Manage Assigning Developers Skills Page",
+                                     developers = Developer.query.all(),
+                                     skills=Skill.query.all(),
+                                     assignments=DeveloperSkill.query.all()
+                                    )
+     # Check if developer has the same skill
+     dev_skill_exist = DeveloperSkill.query.filter_by(developer_id = int(dev_id), skill_id = int(skill_id)).first()
+     if dev_skill_exist:
+        flash("This Skill is already assigned to this developer","error")
+        return redirect(url_for("assign_skill("))
+
+     # Create new developer-skill instance
+     new_dev_skill = DeveloperSkill(developer_id=int(dev_id), skill_id=int(skill_id), proficiency_level=int(pro_level))
+     
+     # Add to database
+     db.session.add(new_dev_skill)
+     db.session.commit()
+     # Flash a success message and redirect back to the add skill page
+     flash("✅ Skill added successfully to a Developer!", "success")
+     return redirect(url_for("assign_skill"))
+
+
+  # Query all skills from the database and pass them to the template for rendering
+  developers=Developer.query.all()
+  skills=Skill.query.all()
+  assignments=DeveloperSkill.query.all()
+  return render_template("developer-skills.html", title="Database Flask Project - Manage Skills Assigning", developers=developers,skills=skills, assignments=assignments)
+     
 if __name__ == "__main__":
   # Runs local server at http://127.0.0.1:5001,
   # once you save changes, it refreshes automatically

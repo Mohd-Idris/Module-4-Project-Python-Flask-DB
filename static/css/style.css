@@ -208,14 +208,16 @@ header {
 body.developers-page,
 body.edit-developers-page,
 body.skills-page,
-body.edit-skill-page {
+body.edit-skill-page,
+body.dev-skills-page {
   background-color: var(--base-color);
 }
 
 .dev-title,
 .edit-dev-title,
 .skill-title,
-.edit-skill-title {
+.edit-skill-title,
+.dev-skills-title {
   background: linear-gradient(to right, var(--accent-color), var(--input-color));
   text-align: center;
   margin: 2rem auto;
@@ -271,7 +273,8 @@ body.edit-skill-page {
   box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.4);
 }
 
-.Add-form-label {
+.Add-form-label,
+.assign-skill-developer-form-label {
   display: block;
   margin: 0.7rem 0 0.5rem;
   font-weight: 600;
@@ -283,7 +286,8 @@ body.edit-skill-page {
 .add-skill-form input,
 .add-skill-form select,
 .edit-skill-form input,
-.edit-skill-form select {
+.edit-skill-form select,
+.assign-skill-developer-form select {
   width: 100%;
   padding: 10px;
   margin-bottom: 1rem;
@@ -303,7 +307,8 @@ body.edit-skill-page {
 .btn-add-dev-form,
 .btn-edit-dev-form,
 .btn-add-skill-form,
-.btn-edit-skill-form {
+.btn-edit-skill-form,
+.btn-assign-skill-developer-form {
   background: var(--accent-color);
   color: var(--general--color);
   width: 100%;
@@ -337,7 +342,8 @@ body.edit-skill-page {
 .btn-edit-dev-cancel:hover,
 .btn-add-skill-form:hover,
 .btn-edit-skill-form:hover,
-.btn-edit-skill-cancel:hover {
+.btn-edit-skill-cancel:hover,
+.btn-assign-skill-developer-form:hover {
   background-color: var(--base-color);
   color: var(--input-color);
   text-transform: uppercase;
@@ -411,6 +417,27 @@ body.edit-skill-page {
   font-size: 0.9rem;
   display: block;
 }
+
+/* .card-info {
+  border: 1px solid red;
+} */
+
+.dev-name-title,
+.dev-skill-title {
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: inline-block;
+  color: var(--base-color);
+
+}
+
+.dev-name,
+.dev-skill {
+  color: var(--soft-color);
+  display: inline;
+  font-size: 1rem;
+}
+
 
 /* end of skills inputs */
 
@@ -511,7 +538,8 @@ body.edit-skill-page {
 }
 
 .cards-container .dev-full-name,
-.cards-container .skill-name {
+.cards-container .skill-name,
+.cards-container .dev-name {
   color: var(--soft-color);
 }
 

@@ -36,7 +36,8 @@
               class="nav-link {% if request.endpoint == 'add_developer' %}active{% endif %}">Developers</a></li>
           <li><a href="{{ url_for('add_skill')}}"
               class="nav-link {% if request.endpoint == 'add_skill' %}active{% endif %}">Skills</a></li>
-          <li><a href="{{ url_for('home')}}" class="nav-link">Contact Me</a></li>
+          <li><a href="{{ url_for('assign_skill')}}"
+              class="nav-link {% if request.endpoint == 'assign_skill' %}active{% endif %}">Assign</a></li>
           </a>
         </ul>
       </nav>

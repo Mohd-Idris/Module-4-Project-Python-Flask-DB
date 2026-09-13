@@ -1,0 +1,106 @@
+{% extends "base.html" %} {%block body_class%}dev-skills-page{%endblock%} {% block content %}
+<h1 class="dev-skills-title"><i class="fa-solid fa-users-gear"></i>
+  <span class="dev-skills-title-span">M</span>anage
+  <span class="dev-skills-title-span">D</span>evelopers
+  <span class="dev-skills-title-span">S</span>kills
+</h1>
+<div class="two-columns-container">
+  <!-- Left Column : Assign a Skill to a Developer Form -->
+  <section class="form-container panel-layout">
+    <h2 class="left-heading-title"><i class="fa-solid fa-user-plus"></i>Assign a Skill to a Developer</h2>
+    <form action="{{ url_for('assign_skill') }}" method="POST" class="assign-skill-developer-form">
+      <!-- A Developer you want to select -->
+      <label for="developer_id" class="assign-skill-developer-form-label">Select a Developer</label>
+      <select id="developer_id" name="developer_id">
+        <option value="">Choose a Developer</option>
+        {% for developer in developers %}
+        <option value="{{ developer.id }}">{{ developer.first_name }} {{ developer.last_name}}</option>
+        {% endfor %}
+      </select>
+      <!-- A Skill you want to assign -->
+      <label for="skill_id" class="assign-skill-developer-form-label">Select a Skill</label>
+      <select id="skill_id" name="skill_id">
+        <option value="">Choose a Skill</option>
+        {% for skill in skills %}
+        <option value="{{ skill.id }}">{{ skill.name }} --- {{ skill.category}}</option>
+        {% endfor %}
+      </select>
+
+      <!-- A Skill Proficiency Level -->
+      <label for="percentage" class="assign-skill-developer-form-label">Proficiency Level: <span
+          class="percent-value-span">50%</span></label>
+      <div class="slider-wrapper">
+        <input type="range" name="skill-proficiency" id="skill-proficiency" min="0" max="100" value="50" step="1"
+          class="range-input" />
+      </div>
+      <!-- Assign button -->
+      <button type="submit" class="btn-assign-skill-developer-form"><i class="fa-solid fa-floppy-disk"></i> Assign a
+        Skill</button>
+    </form>
+  </section>
+
+  <!-- Right Column : List of Skills plus Edit/Delete Options -->
+  <section class="list-dev-skills-container panel-layout">
+    <h2 class="right-heading-title"><i class="fa-solid fa-list"></i>List of Developers Skills</h2>
+    {% if assignments %} <!-- change this in app.py later on instead of assignment, write assignment -->
+    <div class="cards-container">
+      {% for assignment in assignments %}
+      <div class="item-card">
+        <div class="card-info">
+          <span class="dev-name-title">Developer :</span> <span class="dev-name"> {{ assignment.developer.first_name}}
+            {{ assignment.developer.last_name}}</span>
+
+          <span class="dev-skill-title">Skills :</span>
+          <span class="dev-skill">{{ assignment.skill.name }} -
+            Proficiency : {{
+            assignment.proficiency_level}}%
+          </span>
+
+          <!-- <span class="skill-pro-level">Skill Proficiency : {{ assignment.proficiency_level}}%</span> -->
+        </div>
+        <div class="card-actions">
+          <a href="#" class="btn btn-small edit-link"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+
+          <form action="#" method="POST" class="delete-form"
+            onsubmit="return confirm('Are you sure? Deleting this will remove this skill permanently.')">
+
+            <button type="submit" class="btn btn-small btn-delete"><i class="fa-solid fa-trash"></i>
+              Delete</button>
+          </form>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="no-status">
+      <p>No skills assigned Added Yet. <br>Add some! to create your first profile.</p>
+    </div>
+    {% endif %}
+  </section>
+</div>
+<!-- Slider  -->
+<script>
+  const percentage = document.getElementById('skill-proficiency');
+  const percentValueSpan = document.querySelector('.percent-value-span');
+
+  percentage.oninput = () => {
+    percentValueSpan.textContent = percentage.value + '%';
+    if (percentage.value >= 0 && percentage.value <= 30) {
+      percentValueSpan.style.color = '#ef4444';
+    }
+
+    else if (percentage.value > 30 && percentage.value <= 50) {
+      percentValueSpan.style.color = '#f59e0b';
+    }
+    else if (percentage.value > 50 && percentage.value <= 70) {
+      percentValueSpan.style.color = '#b45309';
+    }
+    else if (percentage.value > 70 && percentage.value <= 85) {
+      percentValueSpan.style.color = '#10b981';
+    }
+    else {
+      percentValueSpan.style.color = '#0ea874';
+    }
+  }
+</script>
+{% endblock %}
