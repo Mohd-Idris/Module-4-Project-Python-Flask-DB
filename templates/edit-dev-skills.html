@@ -1,0 +1,62 @@
+{% extends "base.html" %} {%block body_class%}edit-dev-skill-page{%endblock%} {% block content %}
+<h1 class="edit-skill-title"><i class="fa-brands fa-buffer"></i>
+  <span class="skill-title-span">M</span>anage <span class="skill-title-span">D</span>evelopers <span
+    class="skill-title-span">S</span>kills
+</h1>
+<!-- Update Skill Profile -->
+<div class="edit-skill-wrapper">
+  <h2 class="edit-heading-title"><i class="fa-solid fa-wand-magic-sparkles"></i>Update Developer's Skills</h2>
+  <section class="form-container panel-layout">
+    <p><strong>Developer:</strong>
+      {{ assignment.developer.first_name }} {{ assignment.developer.last_name }}
+    </p>
+
+    <p><strong>Skill:</strong>
+      {{ assignment.skill.name }} ---- {{ assignment.skill.category}}
+    </p>
+
+    <form action="#" method="POST" class="add-form">
+      <label for="proficiency_level" class="Add-form-label">Proficiency Level: <span class="percent-value-span">{{
+          assignment.proficiency_level}}%</span></label>
+      <div class="slider-wrapper">
+        <input type="range" name="proficiency_level" id="proficiency_level" min="0" max="100"
+          value="{{ assignment.proficiency_level }}" step="1" class="range-input" />
+      </div>
+
+      <!-- Update Button -->
+      <button type="submit" class="btn-edit-skill-form"><i class="fa-solid fa-pen"></i> Update
+        Skill</button>
+
+      <!-- Cancel Button -->
+      <a href="{{ url_for('assign_skill') }}" class="btn-edit-skill-cancel"><i class="fa-solid fa-ban"></i> Cancel</a>
+    </form>
+  </section>
+
+  <!-- Slider  -->
+  <script>
+    const percentage = document.getElementById('proficiency_level');
+    const percentValueSpan = document.querySelector('.percent-value-span');
+
+    percentage.oninput = () => {
+      percentValueSpan.textContent = percentage.value + '%';
+
+      if (percentage.value >= 0 && percentage.value <= 30) {
+        percentValueSpan.style.color = '#ef4444';
+      }
+
+      else if (percentage.value > 30 && percentage.value <= 50) {
+        percentValueSpan.style.color = '#f59e0b';
+      }
+      else if (percentage.value > 50 && percentage.value <= 70) {
+        percentValueSpan.style.color = '#b45309';
+      }
+      else if (percentage.value > 70 && percentage.value <= 85) {
+        percentValueSpan.style.color = '#10b981';
+      }
+      else {
+        percentValueSpan.style.color = '#0ea874';
+      }
+    }
+
+  </script>
+  {% endblock %}

@@ -45,27 +45,26 @@
     {% if assignments %} <!-- change this in app.py later on instead of assignment, write assignment -->
     <div class="cards-container">
       {% for assignment in assignments %}
-      <div class="item-card">
-        <div class="card-info">
-          <span class="dev-name-title">Developer :</span> <span class="dev-name"> {{ assignment.developer.first_name}}
+      <div class="item-card"> <!-- red color -->
+        <div class="card-info"><!-- blueviolet color -->
+          <span class="dev-name-title">Developer :</span>
+          <span class="dev-name"> {{ assignment.developer.first_name}}
             {{ assignment.developer.last_name}}</span>
-
+          <br>
           <span class="dev-skill-title">Skills :</span>
-          <span class="dev-skill">{{ assignment.skill.name }} -
-            Proficiency : {{
-            assignment.proficiency_level}}%
-          </span>
+          <span class="dev-skill">{{ assignment.skill.name }} - {{ assignment.proficiency_level }}%</span>
 
           <!-- <span class="skill-pro-level">Skill Proficiency : {{ assignment.proficiency_level}}%</span> -->
         </div>
-        <div class="card-actions">
-          <a href="#" class="btn btn-small edit-link"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+        <div class="card-actions"><!-- greenyellow color -->
+          <a href="{{ url_for('edit_assign', assign_id=assignment.id)}}" class="btn btn-small edit-link"><i
+              class="fa-solid fa-pen-to-square"></i> Edit</a>
 
-          <form action="#" method="POST" class="delete-form"
+          <form action="{{ url_for('delete_assign', assign_id=assignment.id)}}" method="POST" class="delete-form"
             onsubmit="return confirm('Are you sure? Deleting this will remove this skill permanently.')">
 
             <button type="submit" class="btn btn-small btn-delete"><i class="fa-solid fa-trash"></i>
-              Delete</button>
+              Remove</button>
           </form>
         </div>
       </div>

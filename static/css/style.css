@@ -209,7 +209,8 @@ body.developers-page,
 body.edit-developers-page,
 body.skills-page,
 body.edit-skill-page,
-body.dev-skills-page {
+body.dev-skills-page,
+body.edit-dev-skill-page {
   background-color: var(--base-color);
 }
 
@@ -222,7 +223,7 @@ body.dev-skills-page {
   text-align: center;
   margin: 2rem auto;
   width: 100%;
-  max-width: 500px;
+  max-width: 600px;
   padding: 10px 20px;
   border-radius: 18px;
 
@@ -391,6 +392,7 @@ body.dev-skills-page {
   border: 1px solid var(--status-color);
   border-radius: 10px;
   box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid red;
 }
 
 .dev-full-name,
@@ -418,24 +420,33 @@ body.dev-skills-page {
   display: block;
 }
 
-/* .card-info {
-  border: 1px solid red;
-} */
+.card-info {
+  /* border: 1px solid blueviolet; */
+  width: 100%;
+}
 
 .dev-name-title,
 .dev-skill-title {
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   display: inline-block;
   color: var(--base-color);
-
 }
 
 .dev-name,
 .dev-skill {
   color: var(--soft-color);
-  display: inline;
+  display: inline-block;
   font-size: 1rem;
+}
+
+.dev-skill {
+  background-color: var(--soft-color);
+  color: var(--input-color);
+  border: 1px solid var(--input-color);
+  outline: none;
+  padding: 0 0.5rem;
+  border-radius: 5px;
 }
 
 
@@ -444,6 +455,7 @@ body.dev-skills-page {
 .card-actions {
   display: flex;
   gap: 0.5rem;
+  border: 1px solid greenyellow;
 }
 
 .edit-link {

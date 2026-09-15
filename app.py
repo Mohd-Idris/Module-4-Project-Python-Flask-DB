@@ -12,6 +12,8 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # Initialize SQLAlchemy with the Flask app
 db = SQLAlchemy(app)
 
+
+# ============================================================================================================
 # Define the Developer model with id, first_name, last_name, and email fields
 class Developer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -19,10 +21,17 @@ class Developer(db.Model):
     last_name = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(100), unique=True, nullable=False)
 
+    # Define the Relationship between Entities (Developer & Skill)
+    skill_asssigned = db.relationship('DeveloperSkill', backref='developer', cascade='all, delete-orphan')
+  
+
     # Define the string representation of the Developer model for debugging purposes
     def __repr__(self):
         return f'<Developer {self.first_name} {self.last_name}>'
+# ============================================================================================================
 
+
+# ============================================================================================================
 # Define the Skills model with id, name, category, percentage, and description fields
 class Skill(db.Model):
   id = db.Column(db.Integer, primary_key=True)
@@ -30,11 +39,16 @@ class Skill(db.Model):
   category = db.Column(db.String(50), nullable=False)
   description = db.Column(db.Text, nullable=False)
 
+  # Define the Relationship between Entities (Developer & Skill)
+  developer_asssigned = db.relationship('DeveloperSkill', backref='skill', cascade='all, delete-orphan')
+
   # Define the string representation of the Skill model for debugging purposes
   def __repr__(self):
       return f'<Skill {self.name}>'
+# ============================================================================================================
 
 
+# ============================================================================================================
 # Define the Developer-Skills model with id, dev_id, skill_id, and proficiency_level fields
 class DeveloperSkill(db.Model):
   id = db.Column(db.Integer, primary_key=True)
@@ -43,16 +57,14 @@ class DeveloperSkill(db.Model):
   proficiency_level = db.Column(db.Integer, nullable=False)
 
   # Define the Relationship between Entities (Developer & Skill)
-  developer = db.relationship('Developer', backref=db.backref('skills_assigned', cascade='all, delete-orphan'))
-  skill = db.relationship('Skill', backref=db.backref('developers_assigned', cascade='all, delete-orphan'))
+  # developer = db.relationship('Developer', backref=db.backref('skills_assigned', cascade='all, delete-orphan'))
+  # skill = db.relationship('Skill', backref=db.backref('developers_assigned', cascade='all, delete-orphan'))
 
   def __repr__(self):
     return f'<DeveloperSkill Developer:{self.developer_id} Skill:{self.skill_id}'
+# ============================================================================================================
 
 
-with app.app_context():
-    # Create the database tables based on the defined models
-    db.create_all()
 
 # Home page route -loads HTML from templates Folder
 @app.route("/")
@@ -65,6 +77,7 @@ def home():
 def about():
   return render_template("about.html", title="Database Flask Project - About Page")
 
+# ============================================================================================================
 # Add Developer page route -loads HTML from templates Folder
 @app.route("/developers", methods=["GET", "POST"])
 def add_developer():
@@ -103,20 +116,7 @@ def add_developer():
                               firstNameInput=first_name,
                               lastNameInput=last_name,
                               emailInput=email
-                              )
-
-    # Validate form data first 
-    # if not first_name or not last_name or not email:
-    #   flash("❌ All fields are required. Please fill in all fields.", "error") 
-    #   return redirect(url_for("add_developer"))
-
-    # Check if the email already exists in the database
-    # existing_developer = Developer.query.filter_by(email=email).first()
-
-    # If a developer with the same email exists, flash an error message and redirect back to the add developer page
-    # if existing_developer:
-      # flash("❌ A developer with this email already exists. Please use a different email.", "error")
-      # return redirect(url_for("add_developer"))
+                              ) 
 
     # Create new developer instance
     new_developer = Developer(first_name=first_name, last_name=last_name, email=email)
@@ -131,7 +131,10 @@ def add_developer():
   # Query all developers from the database and pass them to the template for rendering
   developers = Developer.query.all()
   return render_template("developers.html", title="Database Flask Project - Manage Developers Page", developers=developers)
+# =========================================================================================================================
 
+
+# =========================================================================================================================
 @app.route("/edit_developer/<int:developer_id>", methods=["GET", "POST"])
 def edit_developer(developer_id):
   developer = Developer.query.get_or_404(developer_id)
@@ -174,7 +177,10 @@ def edit_developer(developer_id):
     return redirect(url_for("add_developer"))
   
   return render_template("edit-developers.html", title="Database Flask Project - Edit Developer Page", developer=developer)
+# =========================================================================================================================
 
+
+# =========================================================================================================================
 #  Delete Developer route - handles deletion of a developer by ID
 @app.route("/delete_developer/<int:developer_id>", methods=["POST"])
 def delete_developer(developer_id):
@@ -185,8 +191,10 @@ def delete_developer(developer_id):
   # Flash a success message when developer is deleted and redirect back to the add developer page
   flash("✅ Developer deleted successfully!", "success")
   return redirect(url_for("add_developer"))  
+# ==========================================================================================================================
 
 
+# ==========================================================================================================================
 # Manage Skills 
 # Add Skill page route -loads HTML from templates Folder
 @app.route("/skills", methods=["GET", "POST"])
@@ -244,6 +252,10 @@ def add_skill():
   
   return render_template("skills.html", title="Database Flask Project - Manage Skills Page", skills=skills)
 
+# ==========================================================================================================================
+
+
+# ==========================================================================================================================
 @app.route("/edit_skill/<int:skill_id>", methods=["GET", "POST"])
 def edit_skill(skill_id):
   skill = Skill.query.get_or_404(skill_id)
@@ -274,7 +286,10 @@ def edit_skill(skill_id):
     return redirect(url_for("add_skill"))
   
   return render_template("edit-skills.html", title="Database Flask Project - Edit Developer Page", skill=skill)
+# ==========================================================================================================================
 
+
+# ==========================================================================================================================
 #  Delete Skill route - handles deletion of a skill by ID
 @app.route("/delete_skill/<int:skill_id>", methods=["POST"])
 def delete_skill(skill_id):
@@ -285,7 +300,10 @@ def delete_skill(skill_id):
   # Flash a success message when developer is deleted and redirect back to the add developer page
   flash("✅ Skill deleted successfully!", "success")
   return redirect(url_for("add_skill"))  
+# ==========================================================================================================================
 
+
+# ==========================================================================================================================
 # Assign Skills to Developers 
 # Add DeveloperSkill page route -loads HTML from templates Folder
 @app.route("/developer-skills", methods=["GET", "POST"])
@@ -299,10 +317,6 @@ def assign_skill():
 
      # Track errors
      errors = []
-      
-     #  nameInput = name
-     #  categoryInput = category
-     #  descriptionInput = description
       
      if not dev_id or dev_id == "":
         errors.append("* Developer must be selected first.")
@@ -318,16 +332,20 @@ def assign_skill():
                                      title="Database Flask Project - Manage Assigning Developers Skills Page",
                                      developers = Developer.query.all(),
                                      skills=Skill.query.all(),
-                                     assignments=DeveloperSkill.query.all()
+                                     assignments=DeveloperSkill.query.all() #comeback later
                                     )
      # Check if developer has the same skill
      dev_skill_exist = DeveloperSkill.query.filter_by(developer_id = int(dev_id), skill_id = int(skill_id)).first()
      if dev_skill_exist:
         flash("This Skill is already assigned to this developer","error")
-        return redirect(url_for("assign_skill("))
+        return redirect(url_for("assign_skill"))
 
-     # Create new developer-skill instance
-     new_dev_skill = DeveloperSkill(developer_id=int(dev_id), skill_id=int(skill_id), proficiency_level=int(pro_level))
+     # Create new developer-skill instances
+     developer_id = int(dev_id)
+     skill_id = int(skill_id)
+     proficiency_level = int(pro_level)
+
+     new_dev_skill = DeveloperSkill(developer_id=developer_id, skill_id=skill_id, proficiency_level=proficiency_level) #proficiency_level
      
      # Add to database
      db.session.add(new_dev_skill)
@@ -338,12 +356,52 @@ def assign_skill():
 
 
   # Query all skills from the database and pass them to the template for rendering
-  developers=Developer.query.all()
-  skills=Skill.query.all()
-  assignments=DeveloperSkill.query.all()
+  developers = Developer.query.all()
+  skills = Skill.query.all()
+  assignments = DeveloperSkill.query.all()
   return render_template("developer-skills.html", title="Database Flask Project - Manage Skills Assigning", developers=developers,skills=skills, assignments=assignments)
-     
+# =======================================================================================================================================================================
+
+
+# =======================================================================================================================================================================
+@app.route("/edit-assign/<int:assign_id>", methods=["GET", "POST"])
+def edit_assign(assign_id):
+  assignment = DeveloperSkill.query.get_or_404(assign_id)
+  if request.method == "POST":
+    proficiency_value = request.form.get("proficiency_level").strip()
+
+    # Validate form data
+    if not proficiency_value :
+      flash("❌ All fields are required. Please fill in all fields.", "error") 
+      return redirect(url_for("edit_assign"))
+    
+    
+    
+    assignment.proficiency_level = int(proficiency_value)
+    db.session.commit()
+    # Flash a success message and redirect back to the add skill page
+    flash("✅ Proficiency updated successfully!", "success")
+    return redirect(url_for("assign_skill"))
+  return render_template("edit-dev-skills.html", title="Database Flask Project - Edit Developer's Skills Page", assignment=assignment)
+
+# =======================================================================================================================================================================
+
+# =======================================================================================================================================================================
+@app.route("/delete-assign/<int:assign_id>", methods=["GET", "POST"])
+def delete_assign(assign_id):
+  assignment = DeveloperSkill.query.get_or_404(assign_id)
+  db.session.delete(assignment)
+  db.session.commit()
+  # Flash a success message and redirect back to the add skill page
+  flash("✅ Skill Assigned has been removed successfully!", "success")
+  return redirect(url_for("assign_skill"))
+# =======================================================================================================================================================================
+
+   
 if __name__ == "__main__":
+  with app.app_context():
+    # Create the database tables based on the defined models
+    db.create_all()
   # Runs local server at http://127.0.0.1:5001,
   # once you save changes, it refreshes automatically
   app.run(debug=True, port=5001)
