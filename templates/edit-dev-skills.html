@@ -7,15 +7,25 @@
 <div class="edit-skill-wrapper">
   <h2 class="edit-heading-title"><i class="fa-solid fa-wand-magic-sparkles"></i>Update Developer's Skills</h2>
   <section class="form-container panel-layout">
-    <p><strong>Developer:</strong>
+    <!-- <p><strong>Developer:</strong>
       {{ assignment.developer.first_name }} {{ assignment.developer.last_name }}
     </p>
 
     <p><strong>Skill:</strong>
       {{ assignment.skill.name }} ---- {{ assignment.skill.category}}
-    </p>
+    </p> -->
 
-    <form action="#" method="POST" class="add-form">
+    <form action="#" method="POST" class="add-skill-form">
+      <label for="developer-name" class="Add-form-label">Developer:</label>
+      <input type="text" id="developer-name" name="developer-name"
+        value="{{ assignment.developer.first_name }} {{ assignment.developer.last_name }}" disabled />
+
+      <label for="skill-name" class="Add-form-label">Skill:</label>
+      <input type="text" id="skill-name" name="skill-name"
+        value="{{ assignment.skill.name }} ---- {{ assignment.skill.category}}" disabled />
+
+
+
       <label for="proficiency_level" class="Add-form-label">Proficiency Level: <span class="percent-value-span">{{
           assignment.proficiency_level}}%</span></label>
       <div class="slider-wrapper">
