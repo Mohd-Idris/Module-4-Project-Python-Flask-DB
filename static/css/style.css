@@ -729,7 +729,7 @@ footer {
 /* ------------------------- */
 
 
-/* Responsiveness */
+/* Responsiveness 768px */
 /* ------------header------------- */
 
 @media (max-width: 768px) {
@@ -813,6 +813,101 @@ footer {
 
   /* ----------------------- */
 
+}
 
+/* Responsiveness 528px */
+
+@media (max-width: 528px) {
+  .scroll-up {
+    display: none;
+  }
+
+  .header-container {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px 5%;
+  }
+
+  .nav-links {
+    /* gap: 1rem; */
+  }
+
+  /* -------------home page-------------- */
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .hero-container h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero-container p {
+    font-size: 0.95rem;
+  }
+
+  .hero-container .hero-image {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+
+  .hero-container .hero-image img {
+    object-fit: contain;
+    height: 300px;
+  }
+
+  /* ------------------------------ */
+
+  /* ------------------------------ */
+  body.developers-page .dev-title,
+  body.edit-developers-page .edit-dev-title,
+  body.skills-page .skill-title,
+  body.edit-skill-page .edit-skill-title,
+  body.dev-skills-page .dev-skills-title,
+  body.edit-dev-skill-page .edit-skill-title {
+    font-size: 1.5rem;
+  }
+
+  .two-columns-container {
+    grid-template-columns: 1fr;
+  }
+
+
+  .right-heading-title {
+    font-size: 1.1rem;
+    padding: 10px 10px;
+  }
+
+  .left-heading-title {
+    font-size: 1.1rem;
+    padding: 10px 0.33rem;
+  }
+
+  .left-heading-title i,
+  .right-heading-title i {
+    margin-right: 10px;
+  }
+
+  /* ------------------------------ */
+
+  .edit-heading-title,
+  .edit-skill-title {
+    font-size: 1.2rem;
+  }
+
+  body.developers-page .dev-title,
+  body.edit-developers-page .edit-dev-title,
+  body.skills-page .skill-title,
+  body.edit-skill-page .edit-skill-title,
+  body.edit-dev-skill-page .edit-skill-title {
+    max-width: 400px;
+  }
+
+  body.dev-skills-page .dev-skills-title,
+  body.edit-dev-skill-page .edit-skill-title {
+    max-width: 420px;
+  }
 
 }
