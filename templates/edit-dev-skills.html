@@ -15,19 +15,20 @@
       {{ assignment.skill.name }} ---- {{ assignment.skill.category}}
     </p> -->
 
-    <form action="#" method="POST" class="add-skill-form">
+    <form action="#" method="POST" class="edit-dev-skill-form">
       <label for="developer-name" class="Add-form-label">Developer:</label>
       <input type="text" id="developer-name" name="developer-name"
         value="{{ assignment.developer.first_name }} {{ assignment.developer.last_name }}" disabled />
 
       <label for="skill-name" class="Add-form-label">Skill:</label>
       <input type="text" id="skill-name" name="skill-name"
-        value="{{ assignment.skill.name }} ---- {{ assignment.skill.category}}" disabled />
+        value="{{ assignment.skill.name }} &nbsp;&mdash;&mdash;&nbsp; {{ assignment.skill.category}}" disabled />
 
 
 
       <label for="proficiency_level" class="Add-form-label">Proficiency Level: <span class="percent-value-span">{{
-          assignment.proficiency_level}}%</span></label>
+          assignment.proficiency_level}}%</span></label> <span class="pro-level-span">* Please scroll to the right /
+        left to change the percentage value</span>
       <div class="slider-wrapper">
         <input type="range" name="proficiency_level" id="proficiency_level" min="0" max="100"
           value="{{ assignment.proficiency_level }}" step="1" class="range-input" />
@@ -35,7 +36,7 @@
 
       <!-- Update Button -->
       <button type="submit" class="btn-edit-skill-form"><i class="fa-solid fa-pen"></i> Update
-        Skill</button>
+        Proficiency Level</button>
 
       <!-- Cancel Button -->
       <a href="{{ url_for('assign_skill') }}" class="btn-edit-skill-cancel"><i class="fa-solid fa-ban"></i> Cancel</a>

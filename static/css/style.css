@@ -232,7 +232,8 @@ body.edit-dev-skill-page {
 .dev-title i,
 .edit-dev-title i,
 .skill-title i,
-.edit-skill-title i {
+.edit-skill-title i,
+.dev-skills-title i {
   color: var(--base-color);
   margin-right: 20px;
 }
@@ -240,7 +241,8 @@ body.edit-dev-skill-page {
 .dev-title-span,
 .edit-dev-title-span,
 .skill-title-span,
-.edit-skill-title-span {
+.edit-skill-title-span,
+.dev-skills-title-span {
   color: var(--general--color);
 }
 
@@ -287,8 +289,10 @@ body.edit-dev-skill-page {
 .add-skill-form input,
 .add-skill-form select,
 .edit-skill-form input,
+.edit-skill-form textarea,
 .edit-skill-form select,
-.assign-skill-developer-form select {
+.assign-skill-developer-form select,
+.edit-dev-skill-form input {
   width: 100%;
   padding: 10px;
   margin-bottom: 1rem;
@@ -296,10 +300,21 @@ body.edit-dev-skill-page {
   border-radius: 5px;
 }
 
+.edit-dev-skill-form input {
+  background-color: var(--base-color);
+  color: var(--input-color);
+}
+
+.pro-level-span {
+  font-size: 0.85rem;
+  color: var(--status-color);
+}
+
 .add-developer-form input:focus,
 .edit-developer-form input:focus,
 .add-skill-form input:focus:not(.range-input),
-.edit-skill-form input:focus {
+.edit-skill-form input:focus,
+.edit-skill-form textarea:focus {
   outline: none;
   border-color: var(--accent-color);
   box-shadow: 0 0 5px var(--accent-color);
@@ -539,7 +554,8 @@ body.edit-dev-skill-page {
 /* Skills Page styling */
 /* ------------------ */
 .add-skill-form input[placeholder],
-.add-skill-form select {
+.add-skill-form select,
+.edit-dev-skill-form input {
   text-align: center;
 }
 
@@ -711,3 +727,92 @@ footer {
 
 /* End of Footer Page styling */
 /* ------------------------- */
+
+
+/* Responsiveness */
+/* ------------header------------- */
+
+@media (max-width: 768px) {
+  .scroll-up {
+    display: none;
+  }
+
+  .header-container {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px 5%;
+  }
+
+  .nav-links {
+    /* gap: 1rem; */
+  }
+
+  /* ----------------------- */
+  /* -------------home page-------------- */
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .hero-container h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-container .hero-image {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+
+  /* ----------------------- */
+  /* ------------developers----------- */
+
+  body.developers-page .dev-title,
+  body.edit-developers-page .edit-dev-title,
+  body.skills-page .skill-title,
+  body.edit-skill-page .edit-skill-title,
+  body.dev-skills-page .dev-skills-title,
+  body.edit-dev-skill-page .edit-skill-title {
+    font-size: 1.8rem;
+  }
+
+  .two-columns-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+
+  .right-heading-title {
+    font-size: 1.3rem;
+    padding: 10px 10px;
+  }
+
+  .left-heading-title {
+    font-size: 1.3rem;
+    padding: 10px 0.33rem;
+  }
+
+  .left-heading-title i,
+  .right-heading-title i {
+    margin-right: 10px;
+  }
+
+  /* ----------------------- */
+  /* ----------edit-developers---------- */
+
+  .edit-heading-title,
+  .edit-skill-title {
+    font-size: 1.5rem;
+  }
+
+  body.edit-developers-page .edit-dev-title,
+  body.edit-skill-page .edit-skill-title,
+  body.edit-dev-skill-page .edit-skill-title {
+    max-width: 500px;
+  }
+
+  /* ----------------------- */
+
+
+
+}
