@@ -31,7 +31,8 @@
         <ul class="nav-links">
           <li><a href="{{ url_for('home')}}"
               class="nav-link {% if request.endpoint == 'home' %}active{% endif %}">Home</a></li>
-          <li><a href="{{ url_for('about')}}" class="nav-link">About</a></li>
+          <li><a href="{{ url_for('about')}}"
+              class="nav-link {% if request.endpoint == 'about' %}active{% endif %}">About</a></li>
           <li><a href="{{ url_for('add_developer')}}"
               class="nav-link {% if request.endpoint == 'add_developer' %}active{% endif %}">Developers</a></li>
           <li><a href="{{ url_for('add_skill')}}"

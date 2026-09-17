@@ -203,8 +203,53 @@ header {
 /* End of Home page styling */
 /* ----------------------- */
 
+.about-section {
+  padding: 2rem 5%;
+  margin: auto;
+}
+
+.about-container {
+  max-width: 1100px;
+  margin: 0 auto 4rem;
+  display: flex;
+  flex-direction: column;
+  /* grid-template-columns: 1fr 1fr; */
+  gap: 2rem;
+  align-items: center;
+}
+
+.about-text h2 {
+  font-size: clamp(1.3rem, 2vw, 1.8rem);
+  margin-bottom: 1rem;
+  color: var(--accent-color);
+}
+
+/* About me paragraph style */
+
+.about-text p {
+  color: var(--input-color);
+  margin-bottom: 0.8rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.bold {
+  font-weight: 600;
+  color: var(--accent-color);
+}
+
+/* About me image style */
+
+.about-img img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 30px;
+}
+
 /* Developers page styling */
 /* ---------------------- */
+body.about-page,
 body.developers-page,
 body.edit-developers-page,
 body.skills-page,
@@ -218,7 +263,8 @@ body.edit-dev-skill-page {
 .edit-dev-title,
 .skill-title,
 .edit-skill-title,
-.dev-skills-title {
+.dev-skills-title,
+.about-me-title {
   background: linear-gradient(to right, var(--accent-color), var(--input-color));
   text-align: center;
   margin: 2rem auto;
