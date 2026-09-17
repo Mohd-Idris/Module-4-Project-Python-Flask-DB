@@ -334,6 +334,7 @@ body.edit-dev-skill-page {
 .edit-developer-form input,
 .add-skill-form input,
 .add-skill-form select,
+.add-skill-form textarea,
 .edit-skill-form input,
 .edit-skill-form textarea,
 .edit-skill-form select,
@@ -359,6 +360,7 @@ body.edit-dev-skill-page {
 .add-developer-form input:focus,
 .edit-developer-form input:focus,
 .add-skill-form input:focus:not(.range-input),
+.add-skill-form textarea:focus,
 .edit-skill-form input:focus,
 .edit-skill-form textarea:focus {
   outline: none;
@@ -452,8 +454,8 @@ body.edit-dev-skill-page {
   padding: 1rem;
   border: 1px solid var(--status-color);
   border-radius: 10px;
-  box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.1);
-  border: 1px solid red;
+  box-shadow: 10px 5px 30px 5px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--base-color);
 }
 
 .dev-full-name,

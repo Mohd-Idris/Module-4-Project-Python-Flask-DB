@@ -6,20 +6,60 @@ A complete personal portfolio website built with Flask, using Jinja2 templating 
 
 The goal of this project is to design and develop a responsive, accessible, and professional website. By using semantic HTML and custom CSS, Python, and Flask as backend framework.
 
-# ✨ Features
+👤 About This Project
 
-- Standard Flask project structure.
-- Reusable layout via Jinja2 template inheritance.
-- Organized static assets.
-- Exact dependency versions for consistency.
-- Git-ready configuration.
-- Easy to customize and extend.
-- Semantic HTML5: Built with a clear document structure for better SEO and accessibility.
-- Custom CSS3 Styling: A unique visual identity created without the use of external UI frameworks.
-- Responsive Layout: Uses Flexbox/Grid to ensure the site looks great on phones, tablets, and desktops.
-- Navigation: A smooth, intuitive menu system to explore my biography, projects, and skills, ...etc.
-- Project Showcase: A dedicated section highlighting my portfolio, skills, and contact me section to reach me out for any kind of assistance or support from my end.
-- Logo & 5-Link Nav: Quick access to all pages.
+Built as an academic assessment — Database-Driven Web Application with Flask
+Demonstrates full-stack fundamentals:
+
+• ✅ Python backend & routing
+
+• ✅ Relational database design (many-to-many relationships)
+
+• ✅ CRUD operations (Create, Read, Update, Delete)
+
+• ✅ Form validation & error handling
+
+• ✅ Responsive frontend design
+
+• ✅ Git version control
+
+Built with Flask, SQLAlchemy & CSS
+
+## ✨ Key Features
+
+### Developer Management
+
+- Add new developers — first name, last name, email
+- Edit existing developer details
+- Delete developers
+- Email uniqueness validation — prevents duplicates
+- Input validation — shows clear messages; keeps filled values visible
+
+### Skill Management
+
+- Add skills — name, category, description
+- Edit skill details
+- Remove skills from database
+- Predefined categories: Frontend, Backend, Programming Languages, Databases, Tools & DevOps, Design, Other
+- `<textarea>` for longer descriptions — easy to read & write
+
+### Skill Assignments — Many-to-Many Relationship
+
+- Assign skills to developers with proficiency level (0–100%)
+- Prevent duplicate assignments — same developer+skill cannot be added twice
+- Update proficiency — edit page with slider input
+- Remove assignments — delete with confirmation prompt
+- Clear listing showing developer name, skill name, and percentage
+
+### User Experience & Interface
+
+- Fully responsive design — adapts to mobile, tablet, and desktop screens
+- Navigation bar — highlights current active page
+- Flash messages — clear success/error feedback
+- Dropdown styling — solid backgrounds, high contrast, no transparency issues
+- Form validation — all required fields checked before submission
+- Pure HTML5 + CSS3 — no JavaScript required for core functionality
+- Consistent color scheme — gold accents, clean readable contrast
 
 # Navigation & Sections
 
@@ -29,8 +69,8 @@ The website features a smooth, multi-pages navigation layout including:
 - Hero Section: A professional landing introduction.
 - About Me: My background and personal story.
 - Skills: Technical proficiencies and tools.
-- Portfolio: A showcase of my completed projects.
-- Contact Me: A dedicated area for reaching out.
+- Developers: A showcase of my completed projects.
+- DeveloperSkill: Technical proficiencies and tools.
 - Footer: Copyrights and social links.
 
 # 🛠️ Technologies & Tools
@@ -281,7 +321,7 @@ A database-driven web application built with **Python**, **Flask**, **SQLAlchemy
 ## 📂 Project Structure
 
 ```
-your-project/
+Database Project/
 ├── venv/                   # Python virtual environment
 │
 ├── instance/
@@ -289,42 +329,25 @@ your-project/
 │
 ├── static/                 # Static assets
 │ ├── css/
-│ │ └── style.css # Main stylesheet
-│ └── images/ # Website images
+│ │ └── style.css           # Main stylesheet
+│ └── images/               # Website images
 │
-├── templates/
-├── base.html           # Shared layout — header, nav, footer
-├── index.html          # Home / landing page
-├── developers.html     # Add developer + list all
-├── edit-developers.html # Edit existing developer
-├── skills.html         # Add skill + list all
-├── edit-skills.html     # Edit existing skill
-├── developer-skills.html # Assign skills to developers
-└── edit-dev-skills.html # Update proficiency level
+├── templates/              # HTML templates
+├── base.html               # Base template (shared header/footer/nav)
+├── index.html              # Home / landing page
+├── about.html              # About / About Me page
+├── developers.html         # Add developer + list all developers
+├── edit-developers.html    # Edit existing developer
+├── skills.html             # Add skill + list all skills
+├── edit-skills.html        # Edit existing skill
+├── developer-skills.html   # Assign skills to developers
+└── edit-dev-skills.html    # Update proficiency level
 │
-├── .gitignore              # Files excluded from Git commits
-├── app.py                  # Flask app, models, all routes
-├── README.md               # This file — project documentation
+├── .gitignore              # Git ignored files/folders
+├── app.py                  # Main Flask app, models, all routes
+├── README.md               # Project documentation
 └── requirements.txt        # Python dependencies
 
-```
-
-```FLASK-PROJECT/
-├── static/ # Static assets
-│ ├── css/
-│ │ └── style.css # Main stylesheet
-│ └── images/ # Website images
-├── templates/ # HTML templates
-│ ├── base.html # Base template (shared header/footer/nav)
-│ ├── index.html # Home page
-│ ├── about.html # About Me page
-│ ├── skills.html # Skills page
-│ ├── portfolio.html # Portfolio/Projects page
-│ └── contact.html # Contact page
-├── venv/ # Python virtual environment
-├── .gitignore # Git ignored files/folders
-├── app.py # Main Flask application
-└── requirements.txt # Exact package versions
 ```
 
 ---
@@ -342,6 +365,7 @@ python app.py
 http://127.0.0.1:5001
 
 The SQLite database (developers.db) will be created automatically on first launch.
+```
 
 📝 Usage Guide
 
@@ -391,22 +415,6 @@ Validation & Safety
 
 • Password protection for edit/delete actions
 
-👤 About This Project
+```
 
-Built as an academic assessment — Database-Driven Web Application with Flask
-Demonstrates full-stack fundamentals:
-
-• ✅ Python backend & routing
-
-• ✅ Relational database design (many-to-many relationships)
-
-• ✅ CRUD operations (Create, Read, Update, Delete)
-
-• ✅ Form validation & error handling
-
-• ✅ Responsive frontend design
-
-• ✅ Git version control
-
-Built with Flask, SQLAlchemy & CSS — No JavaScript required for core functionality ✨
 ```

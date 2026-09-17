@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, url_for, request, redirect, flash
 from flask_sqlalchemy import SQLAlchemy
 
@@ -5,8 +6,10 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your-secret-key'
 
+database_url = os.environ.get('DATABASE_URL', 'sqlite:///developers.db')
+
 # Configure SQLAlchemy with SQLite database URI and disable track modifications
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///developers.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = database_url
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Initialize SQLAlchemy with the Flask app
@@ -397,11 +400,11 @@ def delete_assign(assign_id):
   return redirect(url_for("assign_skill"))
 # =======================================================================================================================================================================
 
+with app.app_context():
+  # Create the database tables based on the defined models
+  db.create_all()
    
 if __name__ == "__main__":
-  with app.app_context():
-    # Create the database tables based on the defined models
-    db.create_all()
   # Runs local server at http://127.0.0.1:5001,
   # once you save changes, it refreshes automatically
   app.run(debug=True, port=5001)
