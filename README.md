@@ -195,7 +195,88 @@ To ensure that my code meets the requirements of cleaning and has no any kind of
 
 # General Notes / Developer Logs
 
-Before I started buindling this website, I was worried about bringing an idea for this project because Python and Flask cocepts were not well known for me, becuase of that I've encountered some issues took me some time to be able to understand python and especially Flask. Then I began my journey with Flask, although I had an idea to build another website I decided to go and develop/enhance my previous project I built just to apply all the concept that I have been learning throughout the course. During building the project I encountered lots of error messages from Flask as expected but later on I managed to fix them all by watching the recoreded classes and searching on Developers forum or so, and then I started to enjoy after understanding all the concepts and fixing errors to build my website by using these new tools Python and Flask. At the end I would say, taking what you learnt already and then add what you just learnt it's really something, I started to feel that I am growing a bit by bit every project that we built and we will build, will add a fragment to your experience as developer a junior one.
+- On this module, we learned how to connect a website to an actual database. previously, we had not done this —— we were working with dummy data, and then we used `Browser` LocalStorage to store data directly in the browser. Now we've learned to build and use a proper database, so our info is stored securely and we never need to worry about losing data.<br>
+
+- When I started building this project, I was extending and rebuilding the foundation I created for `Project NO #2`. My main question was `how do I integrate a real database into what I had built before`? After learning the fundamentals ——— how to design tables, create a database, and connect entities through relationships —— here is my project journey:
+
+### Phase #1: Database Design
+
+- Used `draw.io` to design the `ERD Diagram` with three core entities (tables)
+- Defined the data types and constraints for each attribute (field)
+- Established relationship between entities (tables), including the junction table for many-to-many connections.
+
+### Phase #2: Environment & Foundation
+
+Start building the core / structure of the project such as:
+
+1. Created local `Git` Repo and then connected it to `GitHub`
+2. Built the shared `base template` —— with shared navigation, header, and footer
+3. Set up Flask App & configured `Flask-Alchemy` with `SQLite`
+4. Established `CSS` basic structure and color scheme
+
+### Phase #3: Core Features
+
+#### Developers
+
+- Built `Developers` page : add form and full listing displayed side-by-side
+- Implemented input validation & prevented duplicate email entries
+- Values preserved in the form if an error occurs —— no need to re-type everything
+
+#### Edit Developers
+
+- Created `Edit Developers` page : form pre-fills the existing data, update the record
+- Save updates and return to the Developers List
+- Added `Delete` functionality with confirmation message
+- Implemented email validation to prevent duplication
+
+#### Skills
+
+- Built `Skills` page : add form and full listing displayed side-by-side
+- Implemented input validation for all required fields
+
+#### Edit Skills
+
+- created `Edit Skills` page : updates all the field dynamically
+- Added `Delete` functionality with confirmation message
+
+### Phase #4: Relationships (Assign Skills)
+
+- Built `Assign Skills` page —— connects developers to skills with proficiency level slider
+- Refined slider display : real-time percentage display the value
+- Cascade `Delete` logic —— removing a developer or skill automatically removes all their associated assignments
+
+### Phase #5: Testing
+
+- Tested what I've built to make sure everything is working fine
+- Tested all pages, routes, and forms to confirm everything works fine
+- Verified accessibility - all contrast ratios meet the minimum 4.5:1 standard
+- Ensured responsive layout works across the mobile and tablet screens
+
+### Summary
+
+Through this module (`Database Module`), I have built a complete, working database-driven web application. Having learned `HTML`, `CSS`, `JavaScript`, `Python`, and now `Database`. I feel myself growing into a real developer. I know I am still at the beginning, but I can see how all these pieces fit together. I am excited to keep learning, practicing, and mastering these tools one day —— so I can build beautiful, powerful, and user-friendly websites in the near future.
+
+# 📌 Future Development
+
+```
+• User authentication & secure login system
+
+• PostgreSQL integration (replace SQLite)
+
+• Search and filter functionality
+
+• Profile image upload
+
+• Pagination for large datasets
+
+• Password protection for edit/delete actions
+
+• Make an account for each developer to be able to create his profile
+
+• Improve the `Assign Skills` to hold more than skills for a certain developer
+
+• Improve website User Experience to be better by adding some interactivity
+```
 
 # 📦 Requirements (requirements.txt)
 
@@ -314,7 +395,7 @@ The SQLite database (developers.db) will be created automatically on first launc
 
 • Values remain in form if error occurs — no re-typing everything
 
-• Duplicate emails and duplicate assignments are blocked
+• Duplicate emails are blocked
 
 • Proficiency restricted to 0–100 range
 
@@ -327,28 +408,6 @@ The SQLite database (developers.db) will be created automatically on first launc
 • Regular commits with clear descriptive messages
 
 • .gitignore excludes: virtual environment, database files, system auto-generated files
-
-# 📌 Future Development
-
-```
-• User authentication & secure login system
-
-• PostgreSQL integration (replace SQLite)
-
-• Search and filter functionality
-
-• Profile image upload
-
-• Pagination for large datasets
-
-• Password protection for edit/delete actions
-
-• Make an account for each developer to be able to create his profile
-
-• Improve the `Assign Skills` to hold more than skills for a certain developer
-
-• Improve website User Experience to be better by adding some interactivity
-```
 
 # 🖥️ How to View
 

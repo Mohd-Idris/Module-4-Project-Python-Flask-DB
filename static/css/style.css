@@ -89,7 +89,7 @@ header {
   color: var(--text-color);
   font-size: 1rem;
   font-weight: 500;
-  transition: color 0.2 ease;
+  transition: color 0.2s ease;
 }
 
 .nav-link:hover {
