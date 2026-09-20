@@ -7,16 +7,16 @@
   <section class="form-container panel-layout">
     <h2 class="left-heading-title"><i class="fa-solid fa-user-plus"></i>Add New Developer</h2>
     <form action="{{ url_for('add_developer') }}" method="POST" class="add-developer-form">
-
+      <!-- First name -->
       <label for="first_name" class="Add-form-label">First Name</label>
       <input type="text" id="first_name" name="first_name" value="{{firstNameInput}}" />
-
+      <!-- Last name -->
       <label for="last_name" class="Add-form-label">Last Name</label>
       <input type="text" id="last_name" name="last_name" value="{{lastNameInput}}" />
-
+      <!-- Email -->
       <label for="email" class="Add-form-label">Email</label>
       <input type="email" id="email" name="email" value="{{emailInput}}" />
-
+      <!-- Button -->
       <button type="submit" class="btn-add-dev-form"><i class="fa-solid fa-floppy-disk"></i> Add a
         Developer</button>
     </form>
@@ -33,12 +33,13 @@
           <span class="dev-email">{{ developer.email }}</span>
         </div>
         <div class="card-actions">
+          <!-- Edit button -->
           <a href="{{ url_for('edit_developer', developer_id=developer.id) }}" class="btn btn-small edit-link"><i
               class="fa-solid fa-pen-to-square"></i> Edit</a>
-
+          <!-- Delete Form action -->
           <form action="{{ url_for('delete_developer', developer_id=developer.id) }}" method="POST" class="delete-form"
             onsubmit="return confirm('Are you sure? Deleting this will remove this developer permanently.')">
-
+            <!-- Delete button -->
             <button type="submit" class="btn btn-small btn-delete"><i class="fa-solid fa-trash"></i>
               Delete</button>
           </form>
@@ -47,6 +48,7 @@
       {% endfor %}
     </div>
     {% else %}
+    <!-- Status Message -->
     <div class="no-status">
       <p>No developers Added Yet. <br>Add some! to create your first profile.</p>
     </div>

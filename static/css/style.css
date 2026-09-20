@@ -22,11 +22,11 @@
   /* General Color */
   --general--color: #000000;
   /* Status Color */
-  --status-color: #888888;
+  --status-color: #666666;
   /* Blue Color */
   --soft-color: #3b70c4;
   /* Blue Color */
-  --sub-color: #A47251;
+  --sub-color: #8b5a38;
   /* Emerald Color */
   --success-color: #10b981;
   /* Error Color */
@@ -43,8 +43,8 @@ body {
   background-color: var(--input-color);
 }
 
-/* Home page styling */
-/* ---------------- */
+/* Header styling */
+/* -------------- */
 header {
   background-color: var(--accent-color);
   position: sticky;
@@ -86,9 +86,9 @@ header {
 }
 
 .nav-link {
+  color: var(--text-color);
   font-size: 1rem;
   font-weight: 500;
-  color: var(--text-color);
   transition: color 0.2 ease;
 }
 
@@ -97,39 +97,36 @@ header {
 }
 
 .nav-link.active {
-  font-weight: 700;
   color: var(--general--color);
+  font-weight: 700;
 }
 
+/* End of Header styling */
+/* -------------------- */
+
+/* Home page styling */
+/* ---------------- */
 .homepage-section {
   background-color: var(--general--color);
   min-height: 70vh;
   padding: 60px 5%;
-  /* border: 1px solid red; */
 }
 
 .hero-container {
-  /* background-color: var(--input-color); */
-  /* width: 90%;
-  max-width: 1200px; */
   padding: 2rem 5%;
   margin: 2rem auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  /* grid-template-columns: repeat(2, 2.5fr); */
-  /* grid-template-columns: 1fr 1fr; */
-  /* grid-template-columns: 1fr; */
   gap: 2rem;
   justify-content: center;
   align-items: center;
-  /* border: 1px solid red; */
 }
 
 .hero-content h1 {
+  color: var(--input-color);
+  margin-bottom: 20px;
   font-size: clamp(2rem, 4vw, 3rem);
   line-height: 1.2;
-  margin-bottom: 20px;
-  color: var(--input-color);
 }
 
 .hero-content h1 .home-title {
@@ -137,9 +134,9 @@ header {
 }
 
 .hero-content p {
-  font-size: 1.1rem;
-  margin-bottom: 1.3rem;
   color: var(--input-color);
+  margin-bottom: 1.3rem;
+  font-size: 1.1rem;
   text-align: justify;
   word-spacing: 1.5px;
 }
@@ -151,12 +148,9 @@ header {
   max-width: 200px;
   padding: 12px 15px;
   margin: 0 auto;
-  /* margin: 0 15px 10px 0; */
   display: inline-flex;
-  /* gap: 30px; */
   justify-content: center;
   border-radius: 25px;
-  /* text-align: center; */
 }
 
 .btn-home:hover {
@@ -168,8 +162,6 @@ header {
 .hero-content .home-buttons-group {
   display: flex;
   gap: 1rem;
-  /* flex-wrap: wrap; */
-  /* justify-content: center; */
   margin-top: 2rem;
 }
 
@@ -182,26 +174,22 @@ header {
   font-size: 1.3rem;
 }
 
-
-
 .hero-image {
   width: 100%;
-  /* max-width: 700px; */
-  /* border: 1px solid red; */
 }
 
 .hero-image img {
   width: 100%;
   height: 380px;
-  /* max-width: 600px; */
-  /* height: auto; */
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   object-fit: cover;
-  /* border: 1px solid wheat; */
 }
 
 /* End of Home page styling */
 /* ----------------------- */
+
+/* About Me page styling */
+/* -------------------- */
 
 .about-section {
   padding: 2rem 5%;
@@ -213,7 +201,6 @@ header {
   margin: 0 auto 4rem;
   display: flex;
   flex-direction: column;
-  /* grid-template-columns: 1fr 1fr; */
   gap: 2rem;
   align-items: center;
 }
@@ -247,8 +234,13 @@ header {
   border-radius: 30px;
 }
 
+/* End of About Me page styling */
+/* --------------------------- */
+
 /* Developers page styling */
 /* ---------------------- */
+
+/* Styling the body of all pages */
 body.about-page,
 body.developers-page,
 body.edit-developers-page,
@@ -259,22 +251,23 @@ body.edit-dev-skill-page {
   background-color: var(--base-color);
 }
 
+/* Styling the title of each page */
+.about-me-title,
 .dev-title,
-.edit-dev-title,
 .skill-title,
+.edit-dev-title,
 .edit-skill-title,
-.dev-skills-title,
-.about-me-title {
+.dev-skills-title {
   background: linear-gradient(to right, var(--accent-color), var(--input-color));
-  text-align: center;
-  margin: 2rem auto;
   width: 100%;
   max-width: 600px;
   padding: 10px 20px;
+  margin: 2rem auto;
+  text-align: center;
   border-radius: 18px;
-
 }
 
+/* Styling the icon of each title */
 .dev-title i,
 .edit-dev-title i,
 .skill-title i,
@@ -294,10 +287,10 @@ body.edit-dev-skill-page {
 
 .left-heading-title,
 .right-heading-title {
-  text-align: center;
   background-color: var(--accent-color);
-  margin: 2rem 0;
   padding: 10px 20px;
+  margin: 2rem 0;
+  text-align: center;
   border-radius: 15px;
 }
 
@@ -324,12 +317,13 @@ body.edit-dev-skill-page {
 
 .Add-form-label,
 .assign-skill-developer-form-label {
+  color: var(--text-color);
   display: block;
   margin: 0.7rem 0 0.5rem;
   font-weight: 600;
-  color: var(--text-color);
 }
 
+/* Styling the form inputs of each page that has one */
 .add-developer-form input,
 .edit-developer-form input,
 .add-skill-form input,
@@ -353,8 +347,8 @@ body.edit-dev-skill-page {
 }
 
 .pro-level-span {
-  font-size: 0.85rem;
   color: var(--status-color);
+  font-size: 0.85rem;
 }
 
 .add-developer-form input:focus,
@@ -389,15 +383,13 @@ body.edit-dev-skill-page {
   background: var(--error-color);
   color: var(--input-color);
   width: 100%;
-  display: inline-block;
-  margin: 1rem auto 0;
-  /* margin-top: 1rem; */
   padding: 12px 15px;
+  margin: 1rem auto 0;
+  display: inline-block;
   border-radius: 15px;
   font-size: 1rem;
   cursor: pointer;
   border: none;
-
   text-align: center;
 }
 
@@ -420,7 +412,6 @@ body.edit-dev-skill-page {
 .btn-add-skill-form i,
 .btn-edit-skill-form i,
 .btn-edit-skill-cancel i {
-  /* color: var(--base-color); */
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -446,13 +437,12 @@ body.edit-dev-skill-page {
 }
 
 .item-card {
+  padding: 1rem;
   display: flex;
+  gap: 0.8rem;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 0.8rem;
-  padding: 1rem;
-  border: 1px solid var(--status-color);
   border-radius: 10px;
   box-shadow: 10px 5px 30px 5px rgba(0, 0, 0, 0.1);
   border: 1px solid var(--base-color);
@@ -470,7 +460,12 @@ body.edit-dev-skill-page {
   font-size: 0.9rem;
 }
 
-/* Skills inputs */
+/* End of Developers page styling */
+/* --------------------------- */
+
+/* Skills page styling */
+/* ------------------ */
+
 .skill-category {
   font-weight: 600;
 }
@@ -478,13 +473,17 @@ body.edit-dev-skill-page {
 .skill-desc,
 .skill-category {
   color: var(--base-color);
-  /* margin-left: 0.5rem; */
   font-size: 0.9rem;
   display: block;
 }
 
+/* End of Skills page styling */
+/* ------------------------- */
+
+/* Developer-Skills page styling */
+/* ---------------------------- */
+
 .card-info {
-  /* border: 1px solid blueviolet; */
   width: 100%;
 }
 
@@ -512,8 +511,11 @@ body.edit-dev-skill-page {
   border-radius: 5px;
 }
 
+/* End of Developer-Skills page styling */
+/* ----------------------------------- */
 
-/* end of skills inputs */
+/* Styling Card Actions */
+/* -------------------- */
 
 .card-actions {
   display: flex;
@@ -565,8 +567,8 @@ body.edit-dev-skill-page {
   border-radius: 6px;
 }
 
-/* End of Developers page styling */
-/* ----------------------------- */
+/* End of Card Actions Styling */
+/* -------------------------- */
 
 /* Edit Developer Page styling */
 /* -------------------------- */
@@ -599,8 +601,39 @@ body.edit-dev-skill-page {
 /* End of Edit Developers page styling */
 /* ---------------------------------- */
 
-/* Skills Page styling */
-/* ------------------ */
+/* Edit Skills Page styling */
+/* ----------------------- */
+.edit-skill-title {
+  margin: 2rem auto 1rem;
+}
+
+.edit-heading-title {
+  background-color: var(--accent-color);
+  width: 100%;
+  max-width: 500px;
+  margin: 1rem auto;
+  padding: 10px 20px;
+  border-radius: 18px;
+  text-align: center;
+}
+
+.edit-heading-title i {
+  color: var(--base-color);
+  margin-right: 20px;
+}
+
+.edit-skill-wrapper {
+  width: 90%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1rem 5%;
+}
+
+/* End of Edit Skills page styling */
+/* ------------------------------ */
+
+/* Edit Developer-Skills Page styling */
+/* --------------------------------- */
 .add-skill-form input[placeholder],
 .add-skill-form select,
 .edit-dev-skill-form input {
@@ -635,50 +668,21 @@ body.edit-dev-skill-page {
 }
 
 .range-input {
+  background: var(--input-color);
   width: 100%;
   height: 8px;
   border-radius: 8px;
-  background: var(--input-color);
   outline: none;
   border: none;
   cursor: pointer;
 }
 
 
-/* End of Skills Page styling */
-/* ------------------------- */
+/* End of Edit Developer-Skills Page styling */
+/* ---------------------------------------- */
 
-/* Edit Skills Page styling */
-/* -------------------------- */
-.edit-skill-title {
-  margin: 2rem auto 1rem;
-}
-
-.edit-heading-title {
-  background-color: var(--accent-color);
-  width: 100%;
-  max-width: 500px;
-  margin: 1rem auto;
-  padding: 10px 20px;
-  border-radius: 18px;
-  text-align: center;
-}
-
-.edit-heading-title i {
-  color: var(--base-color);
-  margin-right: 20px;
-}
-
-.edit-skill-wrapper {
-  width: 90%;
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 1rem 5%;
-}
-
-/* End of Edit Skills page styling */
-/* ---------------------------------- */
-
+/* Styling Flash Messages */
+/* --------------------- */
 
 .flash-messages {
   width: 90%;
@@ -689,6 +693,7 @@ body.edit-dev-skill-page {
   text-align: center;
 }
 
+/* Success Message */
 .flash-success {
   background-color: var(--input-color);
   color: var(--success-color);
@@ -696,7 +701,7 @@ body.edit-dev-skill-page {
   animation: fadeOut 5s ease-in-out forwards;
 }
 
-
+/* Success Message Animation */
 @keyframes fadeOut {
   0% {
     opacity: 1;
@@ -716,18 +721,17 @@ body.edit-dev-skill-page {
   }
 }
 
+/* Error Message */
 .flash-error {
-  /* background-color: #f8d7da; */
   background-color: var(--input-color);
   color: var(--error-color);
   padding: 10px;
   white-space: pre-line;
   line-height: 1.9;
-  /* border: 1px solid #f5c6cb; */
 }
 
-/* End of Edit Developer Page styling */
-/* --------------------------------- */
+/* End of Styling Success & Error Messages */
+/* -------------------------------------- */
 
 /* Footer Page styling */
 /* ------------------ */
@@ -755,6 +759,7 @@ footer {
 }
 
 /* Scroll up arrow styling - Let the user navigates to the top of the page in instant */
+
 .scroll-up {
   background-color: var(--input-color);
   padding: 5px 12px;
@@ -778,12 +783,15 @@ footer {
 
 
 /* Responsiveness 768px */
-/* ------------header------------- */
+/* ------------------- */
 
 @media (max-width: 768px) {
   .scroll-up {
     display: none;
   }
+
+  /* Header styling */
+  /* -------------- */
 
   .header-container {
     flex-direction: column;
@@ -791,12 +799,11 @@ footer {
     padding: 15px 5%;
   }
 
-  .nav-links {
-    /* gap: 1rem; */
-  }
+  /* End of the Header styling */
+  /* ------------------------ */
 
-  /* ----------------------- */
-  /* -------------home page-------------- */
+  /* Home Page styling */
+  /* ---------------- */
   .hero-container {
     grid-template-columns: 1fr;
     gap: 0.5rem;
@@ -813,8 +820,11 @@ footer {
     margin-top: 0.5rem;
   }
 
-  /* ----------------------- */
-  /* ------------developers----------- */
+  /* End of Home page styling */
+  /* ------------------------ */
+
+  /* Developers, Skills, Developer-Skills pages styling */
+  /* ------------------------------------------------- */
 
   body.developers-page .dev-title,
   body.edit-developers-page .edit-dev-title,
@@ -845,8 +855,11 @@ footer {
     margin-right: 10px;
   }
 
-  /* ----------------------- */
-  /* ----------edit-developers---------- */
+  /* End of Developers, Skills, Developer-Skills pages styling */
+  /* -------------------------------------------------------- */
+
+  /* Edit Developers, Edit Skills, Edit Developer-Skills pages styling */
+  /* ---------------------------------------------------------------- */
 
   .edit-heading-title,
   .edit-skill-title {
@@ -859,28 +872,32 @@ footer {
     max-width: 500px;
   }
 
-  /* ----------------------- */
+  /* End of Edit Developers, Edit Skills, Edit Developer-Skills pages styling */
+  /* ----------------------------------------------------------------------- */
 
 }
 
 /* Responsiveness 528px */
+/* ------------------- */
 
 @media (max-width: 528px) {
   .scroll-up {
     display: none;
   }
 
+  /* Header styling */
+  /* -------------- */
   .header-container {
     flex-direction: column;
     gap: 15px;
     padding: 15px 5%;
   }
 
-  .nav-links {
-    /* gap: 1rem; */
-  }
+  /* End of the Header styling */
+  /* ------------------------ */
 
-  /* -------------home page-------------- */
+  /* Home Page styling */
+  /* ---------------- */
   .hero-container {
     grid-template-columns: 1fr;
     gap: 0.5rem;
@@ -906,9 +923,24 @@ footer {
     height: 300px;
   }
 
-  /* ------------------------------ */
+  /* End of Home page styling */
+  /* ------------------------ */
 
-  /* ------------------------------ */
+  /* About Me page styling */
+  /* -------------------- */
+
+  .about-img img {
+    max-width: 250px;
+  }
+
+  /* End of About Me page styling */
+  /* --------------------------- */
+
+  /* Developers, Skills, Developer-Skills pages styling */
+  /* ------------------------------------------------- */
+
+
+  body.about-page .about-me-title,
   body.developers-page .dev-title,
   body.edit-developers-page .edit-dev-title,
   body.skills-page .skill-title,
@@ -938,13 +970,18 @@ footer {
     margin-right: 10px;
   }
 
-  /* ------------------------------ */
+  /* End of Developers, Skills, Developer-Skills pages styling */
+  /* -------------------------------------------------------- */
+
+  /* Edit Developers, Edit Skills, Edit Developer-Skills pages styling */
+  /* ---------------------------------------------------------------- */
 
   .edit-heading-title,
   .edit-skill-title {
     font-size: 1.2rem;
   }
 
+  body.about-page .about-me-title,
   body.developers-page .dev-title,
   body.edit-developers-page .edit-dev-title,
   body.skills-page .skill-title,
@@ -958,4 +995,6 @@ footer {
     max-width: 420px;
   }
 
+  /* End of Edit Developers, Edit Skills, Edit Developer-Skills pages styling */
+  /* ----------------------------------------------------------------------- */
 }

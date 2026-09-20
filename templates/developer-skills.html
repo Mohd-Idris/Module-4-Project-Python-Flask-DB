@@ -27,7 +27,7 @@
       </select>
 
       <!-- A Skill Proficiency Level -->
-      <label for="percentage" class="assign-skill-developer-form-label">Proficiency Level: <span
+      <label for="skill-proficiency" class="assign-skill-developer-form-label">Proficiency Level: <span
           class="percent-value-span">50%</span></label>
       <div class="slider-wrapper">
         <input type="range" name="skill-proficiency" id="skill-proficiency" min="0" max="100" value="50" step="1"
@@ -39,30 +39,30 @@
     </form>
   </section>
 
-  <!-- Right Column : List of Skills plus Edit/Delete Options -->
+  <!-- Right Column : List of Developers Skills plus Edit/Delete Options -->
   <section class="list-dev-skills-container panel-layout">
     <h2 class="right-heading-title"><i class="fa-solid fa-list"></i>List of Developers Skills</h2>
-    {% if assignments %} <!-- change this in app.py later on instead of assignment, write assignment -->
+    {% if assignments %}
     <div class="cards-container">
       {% for assignment in assignments %}
-      <div class="item-card"> <!-- red color -->
-        <div class="card-info"><!-- blueviolet color -->
+      <div class="item-card">
+        <div class="card-info">
           <span class="dev-name-title">Developer :</span>
           <span class="dev-name"> {{ assignment.developer.first_name}}
             {{ assignment.developer.last_name}}</span>
           <br>
           <span class="dev-skill-title">Skills :</span>
           <span class="dev-skill">{{ assignment.skill.name }} - {{ assignment.proficiency_level }}%</span>
-
-          <!-- <span class="skill-pro-level">Skill Proficiency : {{ assignment.proficiency_level}}%</span> -->
         </div>
-        <div class="card-actions"><!-- greenyellow color -->
+
+        <div class="card-actions">
+          <!-- Edit button -->
           <a href="{{ url_for('edit_assign', assign_id=assignment.id)}}" class="btn btn-small edit-link"><i
               class="fa-solid fa-pen-to-square"></i> Edit</a>
-
+          <!-- Delete Form action -->
           <form action="{{ url_for('delete_assign', assign_id=assignment.id)}}" method="POST" class="delete-form"
             onsubmit="return confirm('Are you sure? Deleting this will remove this skill permanently.')">
-
+            <!-- Delete button -->
             <button type="submit" class="btn btn-small btn-delete"><i class="fa-solid fa-trash"></i>
               Remove</button>
           </form>
@@ -71,13 +71,14 @@
       {% endfor %}
     </div>
     {% else %}
+    <!-- Status Message -->
     <div class="no-status">
       <p>No skills assigned Added Yet. <br>Add some! to create your first profile.</p>
     </div>
     {% endif %}
   </section>
 </div>
-<!-- Slider  -->
+<!-- Slider functioning (JavaScript) -->
 <script>
   const percentage = document.getElementById('skill-proficiency');
   const percentValueSpan = document.querySelector('.percent-value-span');
@@ -85,19 +86,24 @@
   percentage.oninput = () => {
     percentValueSpan.textContent = percentage.value + '%';
     if (percentage.value >= 0 && percentage.value <= 30) {
+      // Coral Red 
       percentValueSpan.style.color = '#ef4444';
     }
 
     else if (percentage.value > 30 && percentage.value <= 50) {
+      // Amber or Golden Orange
       percentValueSpan.style.color = '#f59e0b';
     }
     else if (percentage.value > 50 && percentage.value <= 70) {
+      // Amber 700
       percentValueSpan.style.color = '#b45309';
     }
     else if (percentage.value > 70 && percentage.value <= 85) {
+      // Emerald or Emerald 500
       percentValueSpan.style.color = '#10b981';
     }
     else {
+      // Deep Sea Green or Jade Green
       percentValueSpan.style.color = '#0ea874';
     }
   }

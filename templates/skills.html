@@ -28,22 +28,12 @@
         <option value="Marketing" {{ categoryInput=='Marketing' and 'selected' }}>Marketing</option>
         <option value="Others" {{ categoryInput=='Others' and 'selected' }}>Others</option>
       </select>
-      <!-- Skill Proficiency Level -->
-      <!-- <label for="percentage" class="Add-form-label">Proficiency Level: <span
-          class="percent-value-span">50%</span></label>
-      <div class="slider-wrapper">
-        <input type="range" name="percentage" id="percentage" min="0" max="100" value="50" step="1"
-          class="range-input" />
-      </div> -->
       <!-- Description -->
       <label for="description" class="Add-form-label">Description</label>
       <textarea id="description" name="description" rows="5" cols="30"
         placeholder="Please Enter a Skill Description">{{descriptionInput}}</textarea>
-
-      <!-- Image URL -->
-      <!-- <label for="image_url" class="Add-form-label">Image URL</label>
-      <input type="url" id="image_url" name="image_url" placeholder="Please Enter an Image URL" /> -->
-      <button type="submit" class="btn-add-skill-form"><i class="fa-solid fa-floppy-disk"></i> Add a Developer
+      <!-- Button -->
+      <button type="submit" class="btn-add-skill-form"><i class="fa-solid fa-floppy-disk"></i> Add a
         Skill</button>
     </form>
   </section>
@@ -61,12 +51,13 @@
           <span class="skill-desc">{{ skill.description }}</span>
         </div>
         <div class="card-actions">
+          <!-- Edit button -->
           <a href="{{ url_for('edit_skill', skill_id=skill.id) }}" class="btn btn-small edit-link"><i
               class="fa-solid fa-pen-to-square"></i> Edit</a>
-
+          <!-- Delete Form action -->
           <form action="{{ url_for('delete_skill', skill_id=skill.id) }}" method="POST" class="delete-form"
             onsubmit="return confirm('Are you sure? Deleting this will remove this skill permanently.')">
-
+            <!-- Delete button -->
             <button type="submit" class="btn btn-small btn-delete"><i class="fa-solid fa-trash"></i>
               Delete</button>
           </form>
@@ -75,6 +66,7 @@
       {% endfor %}
     </div>
     {% else %}
+    <!-- Status Message -->
     <div class="no-status">
       <p>No skills Added Yet. <br>Add some! to create your first portfolio.</p>
     </div>
